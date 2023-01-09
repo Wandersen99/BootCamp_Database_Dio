@@ -1,0 +1,125 @@
+	#Aula 01 - Apresentando o desafio de projeto 
+lógico para banco de dados
+
+*Desafio de projeto
+
+1. Mapeamento do esquema ER para Relacional
+
+2. Definição do script SQL para criação do esquema de banco de dados
+
+3. Persistência de dados para testes
+
+4. Recuperação de informações com queries SQL
+
+	#Aula 02 - Considerações sobre a variação Esquema ER
+
+* O algoritmo de mapeamento está no slide do material disponível nos outros módulos 
+do curso, na página 107;
+
+*Mapear do modelo de ER para relacional;
+
+	#Aula 03 - Criando um esquema relacional a partir do Esquema Conceitual
+
+* Dica: Deixar id de forma auto-incrementada
+
+	#Aula 04 - Criando o esquema de Banco de dados - ScriptSQL - Parte 01 
+
+*Quando for salver no github o modelo conceitual, salvar a imagem mas também salvar o modelo que esta
+inserido no workbench;
+
+- Sempre que modificar algo em qualquer que seja o modelo, usar comentários para informar a mudança;
+
+- Colocar separadamente o atributo composto endereço;
+(País colocar também)
+
+- O correto é determinar um atributo para cada atributo composto;
+
+*Se precisar modificar alguma tabela, utilizar o alter table modified category e definir o enum novamente;
+
+- se for modificar uma constraint, antes é necessário dar um drop nela e depois adicionar essa constraint novamente;
+
+- Criou o modelo, começa a criar o script do banco de dados;
+
+	#Aula 05 - Criando o esquema de Banco de dados - ScriptSQL - Parte 02
+
+* O nome do atributo não precisa ser igual, mas a definição do tipo de dado(Ex:int,float), sim;
+
+- Fazer a questão do pagamento nesse banco de dados;
+
+- idpayment dentro de orders;
+
+- Criar table payments(
+	idClients int primary key,
+	tipo de pagamento 
+	cartão ou não 
+	idPayment int,
+	limitAvailable float,
+	typePayment enum('Boleto','Cartão','Dois cartões'),
+	primary key(idClient, id_payment)
+	);
+
+- payment cash está associado ao pagamento em boleto;
+
+-idpayment vai ser uma foreign key;
+
+- Criar constraints relacionadas ao pagamento, de check e foreing keys;
+
+	#Aula 06 - Criando o esquema de Banco de dados - ScriptSQL - Parte 03
+
+* Pesquisar quantos números é composto o cnpj;
+
+-Supplier é o fornecedor que está me fornecendo produtos 
+- Vendedor é o cara que está usando minha plataforma para vender produtos;
+	vai ter relação com a tabela produtos;
+
+	#Aula07 - Criando o esquema de Banco de dados - ScriptSQL - Parte 04
+
+* CPF e CNPJ na tabela vendedor, não pode ser not null pois existe a escolha de por só o cpf 
+se for pessoa física ou cnpj se for um vendedor pessoa jurídica, quem vai tratar disso é a aplicação;
+
+- Refinamento para esse modelo, seria trazer para uma tabela separada quem é pessoa jurídica e quem é pessoa física; No caso de vendedor;
+
+- As tabelas que são geradas a partir de um relacionamento n->m, possuem estrutura similar.
+
+
+	#Aula08 - Criando o esquema de Banco de dados - ScriptSQL - Parte 05
+
+* Feito no workbench
+
+	#Aula09 - Criando o esquema de Banco de dados - ScriptSQL - Parte 06
+
+* Integridade referencial é a foreign key;
+
+- Quando coloca um on update cascade no final de uma tabela que é referenciada por outras tabelas,
+quando houver uma atualização nessa tabela que tem a primary key, todas as outras tabelas também vão ser 
+atualizadas;
+
+- on delete set null, estaria deletando a linha relacionada aquele cliente;
+
+	#Aula10 - Persistindo e Recuperando dados a partir de Consultas SQL no banco de dados;
+
+* Algo que tem que ser feito para não dar problema na inserção dos dados;
+- Maior parte feito no WorkBench;
+
+	#Aula 11 - Entendendo o desafio - Criando e Implementando um projeto lógico de Banco de Dados;
+
+* Não há um mínimo de queries a serem realizadas 
+- Os tópicos supracitados devem estar presentes nas queries;
+- Elabore perguntas que podem ser respondidas pelas consultas;
+- As cláusulas podem estar presentes em mais de uma query;
+
+Sendo assim, crie queries SQL com as cláusulas abaixo:
+- Recuperações simples com select statement; | Já!
+- Filtros com Where Statement;     | Já!
+- Crie expressões para gerar atributos derivados; | Já! (Fazer Somatório do valor do pedido)
+- Defina ordenações dos dados com order by; | Já!
+- Condições de filtros aos grupos - having statement; 
+- Crie junções entre tabelas para fornecer uma perspectiva mais complexa dos dados;
+- Utilizar junção com group by também; 
+
+* Algumas das perguntas que podes fazer para embasar as queries SQL:
+
+-Quantos pedidos foram feitos por cada cliente? / Já consigo recuperar!
+-Algum vendedor também é fornecedor? 
+-Relação de produtos fornecedores e estoques;
+-Relação de nomes dos fornecedores e nomes dos produtos; 

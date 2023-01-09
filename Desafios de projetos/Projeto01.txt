@@ -1,0 +1,104 @@
+	#Aula 01 - Refinando um projeto conceitual de Bancod de dados - E-Commerce
+
+*Contexto: Levantamento de requisitos (funcionais ou não funcionais)
+
+*Projeto Conceitual: Modelo ER 
+
+*Projeto lógico: Modelo Relacional 
+
+//Ordem de serviço 
+*Contexto: Dentro de uma empresa os clientes demandam ao helpdesk(central de ajuda) algumas ações.
+- Essas ações são convertidas em ordem de serviço;
+- Os clientes realizam um pedido 
+- O pedido é convertido em ordem de serviço caso possa ser realizado;
+- O técnico executa a ordem de serviço. Após sua finalização a mesma é arquivada.
+
+*Entidades: Cliente, responsável, pedido e ordem de serviço;
+
+*Relacionamentos: Solicita, Analisa, Executa, Arquiva;
+
+*Como representar os dados para responder as demandas; 
+
+	#Aula 02 - Ferramenta de Design alternativa - Draw.io
+https://app.diagrams.net/#G1VIB7EJdudWBG7GYW4v-rRvqghn--TUwb
+
+	#Aula 03 - Ferramenta de Design alternativa - DBDesigner.net
+
+	#Aula 04 - Instalando Workbench no Windows
+
+	#Aula05 - Modelando o cenário de Ordem de Serviço
+* Quando se cria um relacionamento entre entidades, você gera uma foreing key associada a primary key de cada entidade.
+
+	#Aula 06 - Narrativa: Escopo de Universidade
+
+- O cenário que desejamos modelar é o de Ensino, independente se é público ou privado, não vai considerar o financeiro.
+
+- Alunos, Universidade, Cursos(internos,externos), disciplina, provas p1 e p2, professor, pré-requisitos, colegiado;
+
+- Quais informações de aluno e professor guardar?
+- Qual média para aprovação?
+- Haverá restrição, ou diferentes visões? 
+ *Ex de perguntas que podem ser feitas para o cliente para uma melhor modelagem; 
+
+	#Aula 07 - Modelando o Cenário de Universidade
+
+- Quando é feito um relacionamento N:M, é criada uma nova entidade e essa entidade vai herdar atributos das entidades relacionadas.
+
+	#Aula 08 - Refinando o Modelo - Universidade
+
+	#Aula 09 - Narrativa: Escopo de E-commerce
+
+*Venda de produtos (foco)
+
+- Quais são os takeholders;
+- Criar o banco para suportar a venda de produtos;
+- Produto, Estoque, Fornecedores, Pedido e Cliente;
+
+*Cliente faz um pedido, dentro desse pedido tem um produto, esse produto ele pode estar em estoque ou não e geralmente esse produto esta
+associado a um fornecedor;
+
+//Narrativa do produto 
+*Produtos são vendidos por uma única plataforma online. Contudo, estes podem ter vendedores distintos(Terceiros);
+- Cada produto possui um fornecedor;
+- Um ou mais produtos podem compor um pedido;
+
+//Narrativa do Cliente
+
+- O cliente pode se cadastrar no site com seu CPF ou CNPJ; 
+- O endereço do cliente irá determinar o valor do frete(atributo de pedido);
+- Um cliente pode comprar mais de um pedido. Este tem um período 
+de carência para devolução do produto.
+
+//Narrativa do pedido 
+
+- Os pedidos são criados por clientes e possuem informações de compra, endereço e 
+status da entrega; 
+
+- O pedido pode ser cancelado;
+
+//Narrativa - Fornecedor & Estoque 
+
+	#Aula 10 - Modelando o cenário de E-commerce 
+
+Identificação do cliente
+
+Formas de pagamento 
+
+Entrega, informações a cerca da entrega do pedido, status 
+
+	#Aula 11 - Entendendo o Desafio: Refinando um projeto conceitual de banco de dados
+- Ecommerce
+
+* Desafio 1: Replique e Melhore!
+
+- Refinando 
+
+// Cliente PJ e PF - Uma conta pode ser PJ ou PF, mas não pode ter as duas informações;
+
+// Pagamento - Pode ter cadastrado mais de uma forma de pagamento;
+
+- Identificar cada cartão por um id e um nome; 
+
+// Entrega - possui status e código de rastreio
+
+- Atributos do pedido ou uma entidade?

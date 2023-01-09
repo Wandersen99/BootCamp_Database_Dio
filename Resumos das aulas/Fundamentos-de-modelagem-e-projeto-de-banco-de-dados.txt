@@ -1,0 +1,184 @@
+	#Aula 01 - Discursando sobre as características de um Banco de Dados
+
+- Gerência de dados; 
+- Isolamento data/program;
+- Integridade e Consistência;
+- Segurança; 
+- Views; 
+- Recuperação; 
+- Recovery; 
+- Concorrência;
+
+*Mundo fechado --> É uma preposição, determina uma afirmação;
+Dentro do conceito a ser modelado, eu tenho o conceito de mundo fechao;
+
+- O que não estiver contemplado dentro do meu mini mundo é falso; 
+ 
+	#Aula 02 - Mundo fechado e mini-mundo 
+
+* A modelagem vai ser o minimo necessário para que eu consiga 
+operacionalizar e modelar no mini-mundo ou universo de discurso;
+
+*Mini-mundo - é um pedaço que eu consigo modelar do mundo real;
+
+*Modelo lógico que vai armazenar os dados relacionados ao mini-mundo;
+
+	#Aula 03 - Álgebra Relacional 
+
+* O predicado é a parte da oração que contém o verbo e que traz informações
+sobre o sujeito.
+
+- Critério relacionado ao sujeito --> utilizando having ou where
+
+- Modelo relacional é baseado na álgebra relacional que é baseada na teoria dos conjuntos;
+
+*Álgebra relacional é a Linguagem formal para consulta/extração de dados;
+
+	#Aula 04 - Álgebra relacional e projeto de banco de dados 
+
+*Com a álgebra relacional, vamos criar as ações que seram direcionadas ao sgbds, o sgbds vai compilar e retornar
+a tabela, visão gerada através de uma determinada operação; 
+
+*Tradeoff --> dilema - tem que pensar o que é necessário, importante;
+(disponibilidade x performance)
+- Modificações recorrentes no banco de dados, gera um delay, é necessário pensar em performance;
+
+- Passos que devem ser seguidos na criação de um sgbd:
+
+*Projeto conceitual, projeto lógico, projeto físico, validação, produção, manutenção;
+
+- A escolha da estrutura ou o modelo,arquitetura, vai ser a que melhor se adequa ao seu problema ao seu contexto;
+
+	#Aula 05 - Falando sobre modelagem 
+
+* Cada banco de dados possui seu próprio esquema;
+
+API --> é um intermediário entre o usuário e o banco de dados;
+
+*Agir <----> Planejar <----> Fazer <----> <--Checar 
+
+	#Aula 06 - Projeto: Como "nasce" um Banco de dados?
+
+-Entender o contexto e requisitos; 
+-Perfil;(Diferentes grupos acessando o bd?)
+
+-Informações alimentam decisões de negócios;
+-Dados são brutos, não possuem um significado aparente;
+
+*Processo evolutivo 
+- Implementação, modelo, arquitetura, funcionalidades;
+
+*Fases de desenvolvimento do bd:
+
+01- Modelo de alto nível(conceitual)
+02- Modelo lógico (estrutura, relacional?não relacional?)
+03- Modelo de dados físicos (implementação, esquema, sql, requisitos de implementação) 
+
+	#Aula 07 - Design de BDS - Projeto conceitual 
+
+* Linguagem de modelagem de dados --> 2 maneiras de representação: 
+
+//Como criar o modelo?
+
+01 - Gráficas;  
+02 - Textuais;
+
+*Visando representação dos dados;(modelar é criar uma referência)
+
+1° passo:
+
+- 01 - Coleta de dados e análise(verificar se as informações tem a base para criar o que o cliente quer)
+//perguntas a serem respondidas, relacionamentos, entidades, atributos, visões;
+
+	#Aula 08 - Projeto conceitual: Entenda o passo a passo
+
+* A partir de uma narrativa criar o projeto conceitual;
+* Definir o esquema conceitual --> vai dar a visão gráfica do projeto;
+
+*Conotação de maior importância dentro do contexto = entidade (com atributos também relacionados a ele)
+*Verifica o que o projeto busca responder, as perguntas voltadas a ele que podem ser feitas;
+
+DER --> Diagrama entidade-relacionamento 
+
+*Foco no engenheiro de software o projeto conceitual;
+
+* A partir dos requisitos --> Funcionais(o que executar? quais processos?)
+                          --> Não funcional(segurança, desempenho)
+
+*DADOS E REQUISITOS --> Coletados e Analisados --> Para então criar o Esquema Conceitual
+
+	#Aula 09 - Exemplificando o Projeto Conceitual e Processo 
+
+* O esquema conceitual vai ser a base da estrutura do meu banco de dados;
+ - Vai formentar o Esquema lógico que por sua vez vai servir de base para o esquema físico;
+
+* Projeto conceitual basicamente é o que eu vou ter no meu banco de dados;
+
+* Informações de dados e requisitos vão servir de base para as queries também;
+
+*Projeto lógico - Como estruturar;
+
+*Projeto Físico - Como implementar;
+
+	#Aula 10 - Implementação: Projeto Lógico e Físico
+
+* Modelo lógico é a descrição do modelo conceitual;
+- Depende do modelo de banco de dados;
+
+* O modelo lógico é baseado na estrutura, no modelo, estruturando os relacionamentos e entidades;
+
+*Tabelas fornecem a estrutura e a estrutura fornece a organização dos dados;
+
+* O mapeamento do projeto conceitual e do projeto lógico vai resultar no esquema do BD;
+
+*Fases do projeto lógico:
+
+-Criação do esquema lógico;
+-Instalação e Configuração do SGBD;
+-Criação do esquema no BD;
+
+*Características do SGBD vai influenciar no modelo lógico;
+
+*Mapeamento especificando o projeto lógico, do generalista para o relacional, definindo o esquema lógico;
+
+*Relacionamento N para N gera uma entidade;
+
+*Entidade fraca precisa de uma outra entidade para existir;
+
+*Pontos de atenção no mapeamento er x relacional
+ 
+- Entidades (qual tipo de entidade?)
+- Relacionamentos
+- Atributos (multivalorados?)
+
+*Restrições & Integridade
+- Projeto físico vai ser a descrição do modelo lógico do banco de dados;
+
+*Parâmetros físicos:
+- Estrutura e Índices;
+- Organização e Caminhos;
+- Segurança, performance;
+- Alocação de memória;
+- Particionamento de tabelas;
+
+*Esquema físico (implementação)
+Descrição SQL
+
+*Após o esquema físico --> Validação --> Produção --> Manutenção 
+
+	#Aula 11 - Fases de desenvolvimento de BDs e Aplicações 
+
+* Projeto físico --> Especificação de acesso, Projeto de aplicação;
+* Análise funcional --> Projeto conceitual/projeto lógico;
+
+//Especificação de acesso -->*CRUD(para acesso aos dados)--> Queries, Views; 
+                          --> Privacidade; 
+
+// Na fase de implementação é feita também a integração entre o SGBD e a aplicação;
+
+Aplicação --> OLTP --> Performance; processamento de transações online
+              OLAP --> Tá online vou analisar;
+
+	#Aula 12 - Aplicação: Modelagem de dados 
+
+*O DER (diagrama entidade relacionamento vai subsidiar o diagrama relacional, o DR);

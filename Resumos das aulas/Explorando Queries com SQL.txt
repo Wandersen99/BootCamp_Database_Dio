@@ -1,0 +1,177 @@
+	#Aula 01 - Explorando os Comandos de DDL - Data Definition Language
+
+* INSERT | UPDATE |DELETE 
+  CREATE | DROP | ALTER 
+  RENAME| TRUNCATE |MERGE 
+
+*Utilizado pelo DBA;
+
+-Update: Modificar o banco de dados a partir de uma determinada condição;
+
+-DROP:	Remoção de estrutruras; Ou seja, uma entidade mais complexas no db; 
+
+-Delete: Remoção de registros
+
+-Alter: Modificação da estrutura do BD;
+	Ex: Alter table customers 
+		add email varchar (255);
+
+	#Aula 02 - Manipulando o BD com comandos da DDL 
+
+*Alter table --> Pode adicionar um atributo a tabela, pode remover um 
+atributo da tabela, pode adicionar uma constraint, remover uma constraint
+
+Ex:	ALTER TABLE bankAccounts add LimiteCredito float 
+	     not null default 500.00;
+	Alter table bankAccounts add email varchar (60);
+	Alter table bankAccounts drop email;
+
+alter table bankClient add uff char(2) not null default 'RJ';
+	update bankClient set uff='MG' where Nome='fulano';
+
+*Prestar atenção quando tiver um atributo que é auto incrementado na tabela, 
+pois na hora de inserir os dados, é necessáiro especificar os atributos da tabela,(tabela(atri1,
+atribu2) antes 
+de colocar o "values()"
+
+*update bankClient as b set UFF='MG' where b.Nome = 'Fulano';
+
+	#Aula 03 - Elaborando queries SQL com Expressões
+
+* Expressões 
+- Atributos aritméticos 
+- Operações matemáticas 
+- Tipos de dados: string e numérico 
+	
+	Select Fname, Lname, Saraly, Saraly*0.11 as INSS From Employee;
+                    Persistidos       Derivado
+
+- Armazenamento: dados simples    (PERSISTIDOS)
+- Resultado de expressões: dados complexos (DERIVADOS)
+- Plus: utilizar alias 
+
+*Concatenando informações 
+
+	Select Fname,Minit, Lname || ',' || ',' || state as 
+		complete_name from employee;
+- O double números de pip estão relacionados a quantidade de atributos que deseja recuperar;
+
+- State as = sinaliza para o bd que eu estou concatenando as informações dos atributos;
+
+NO MYSQL PARA CONCATENAR 
+	SELECT concat(Fname,'',Minit,'',Lname) 
+ 		as complete_name
+			from employee;
+
+	#Aula 04 - Submetendo Queries SQL com expressões ao Banco de dados;
+
+Expressões - informações que conseguimos recuperar através de atributos persistidos; 
+
+arredondar apenas 2 casas decimais: round(Salary*0.011,2)
+
+- Atributo derivado INSS;
+
+- Multiplicação de porcentagem que se deseja manter o valor e adicionar a porcentagem a esse valor
+para aparecer o valor total usa assim:
+
+	Aumento de 10% ao salário de um empregado:
+
+	Ex: Salary, Salary * 1.1  as increased_salary	
+
+	#Aula 05 - Introdução a operações de conjuntos com SQL 
+
+	Claúsulas:
+* Like (comparação) | Between (tipo de dado numérico)
+
+- Comparação 
+- String Matching 
+- Caracteres especiais: % e _
+
+Ex: Select Fname, Lname
+	From Employee
+	where Address Like '%Houston,TX%';
+
+% comparar independente da quantidade de caracteres vierem antes ou depois; matching de vários elementos;
+_ está relacionado só a um caractere; matching de um elemento;
+
+*Strings 
+
+- 'AB_CD%EF' --> 'AB\_CD\%EF' Escape '\'
+- Utilizando strings e não caracteres especiais;
+
+*Between
+
+- Intervalo 
+- Numérico 
+Ex: Salário, Idade...
+
+	#Aula 06 - Mais expressões e Operações de conjuntos
+
+* Tá em dúvida em qual atributo vai colocar dentro da sua Querie? Dá um desc;
+
+	#Aula 07 - Utilizando operadores lógicos Like e Between
+
+*Prática de Queries no MySQL workbench
+
+	#Aula 08 - Exemplos de mais operadores lógicos:
+
+* Exemplos de operadores lógicos And, Or, no Workbench;
+
+	#Aula 09 - Comandos baseados em Operações matemáticas: Union, Intersection & Except 
+
+*Union = União dos 2 conjuntos 
+ - Union All = Redundância all todos os elementos dentro desses conjuntos inclusive as redundâncias;
+
+*Intersect = Todos os elementos que estão contidos em a e b ao mesmo tempo
+
+*Except = Quais elementos inseridos apenas em A se o sentido for de A->B;
+
+- Só podem ser aplicadas a conjuntos de dados que possuem a mesma estrutra, a mesma quantidade de atributos entre
+as tabelas; Mesmo tipo de relação;
+
+	#Aula 10 - Vendo na prática como funcionam as operações matemáticas com SQL;
+
+* Na operação de união, o conjunto retornado vai ser aqueles elementos que o SGBD encontrou pelo menos uma vez, sem repetir
+o número de vezes que o elemento aparece;
+
+	#Aula 11 - Nested Queries{Subqueries} com SQL - Parte 01 
+
+* Comparação por atributos buscados;
+- Nested Query - Consulta aninhada;
+- Consulta externa e interna;
+
+SELECT   FROM   WHERE 
+
+*IN - Comparação com set 
+*  =- comparação com unidades
+*Retorno: Tabela;
+
+keywords: any, some, all 
+
+*Operadores:  >,>=,<,<=, and <>
+
+	#Aula 12 - Nested Queries{Subqueries} com SQL - Parte 02
+
+*Restrições baseadas em linhas 
+
+- Exists: True se o resultado da consulta aninhada contiver pelo menos uma tupla;
+
+- Not Exists: True se o resultado da consulta aninhada não contiver tuplas;
+
+- Unique: Retorna TRUE se for único;
+
+	#Aula 13 - Criando subqueries para recuperar informações no banco de dados
+
+*Anotado no workbench
+
+	#Aula 14 - Segundo exemplo de utilização de Subqueries SQL
+
+*Anotado no workbench
+
+	#Aula 15 - Utilizanodo Exists, Unique e comparação 
+com conjuntos explícitos em Queries SQL;
+
+* Responder perguntas é um dos trabalhos do analista de dados e do cientista de dados;
+
+- Para consultar os erros que acontencerem no Mysql é só buscar no site do mysql na parte de documentação 
+e inserir o erro; 

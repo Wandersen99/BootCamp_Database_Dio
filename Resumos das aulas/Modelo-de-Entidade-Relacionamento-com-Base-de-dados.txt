@@ -1,0 +1,154 @@
+
+	#Aula01 - Modelo ER: Tipos de Entidade, Chaves e atributos 
+
+*Faz parte do modelo conceitual: Entidades, relacionamentos e atributos;
+
+*Representada através de um diagrama que é o diagrama de entidade relacionamento;
+
+*Diagrama ER --> Foco no esquema;
+- Raras modificações;
+- Facilidade de manipular;
+- Esquema ER do banco de dados;
+
+*Entidade --> Se relaciona com o objeto;
+
+- Componente básico;
+- Existência independente;
+- Atributos (caracterizam propriedades);
+
+*Conjunto de entidade esta relacionado as instâncias;
+*Conjunto de entidades são as instâncias;
+
+*Atributos são propriedades de uma entidade;
+
+-Caracterizam, descrevem uma entidade; 
+
+*Série de classificações dos atributos:
+
+- Atômicos(simples, de informação única) x Composto(atributo que está composto por mais de um elemento);
+- Atributos multivalorados;
+- Armazenados e derivados;
+- Atributos nulos;
+- Atributos complexos;
+
+	#Aula 02 - Tipos de Atributos dentro do modelo ER
+
+*Atributos simples/multivalorados;
+-Multivalorados -->Está associado ao valor que aquele atributo possui.
+
+*Atributos stored/derivados --> armazenados(dificilmente vão ser modificados)
+
+*Atributo nulos --> Informação não é necessária; 
+
+*Esquema define o tipo e o tipo define a coleção; 
+
+* Entidades
+- Elementos DER; 
+// Atributos
+// Chaves(identificação;   
+
+	#Aula 03 - O que é a entidade fraca no modelo er?
+
+*Entidade fraca: 
+
+- Chave não é obrigatória; 
+- Depência;
+- Exclusão cascata; 
+
+	#Aula 04 - exemplo de modelo conceitual - Company 
+
+	#Aula 05 - Relacionamentos, papéis e constraints estruturais 
+
+*Relacionamentos vão estar sendo classificados por:
+
+- Grau --> número de entidades que compõem esse relacionamento;
+
+//Grau-ternário quando se tem mais de 2 entidades se relacionando entre si;
+
+- Auto-Relacional ou não --> se esta se relacionando com ele mesmo ou com entidade distinta;
+
+*Definir um papel nos relacionamentos é definir uma função entre as entidades que se relacionam
+entre si;
+
+*É trazido significado quando se trabalha com relacionamentos;
+- Cardinalidade --> qual o número que essa função leva;
+
+	#Aula 06 - Constraints de relacionamentos binários 
+
+*Cardinalidade corresponde ao n° máximo de instância que participam de um determinado relacionamento;
+
+*Constraints - Participação: 
+
+- Vão denotar uma relação de dependência;
+- Minimun cardinality constraints;
+- Classificação: total(vai determinar que a participação dela é obrigatório entre as entidades 
+participantes daquele relacionamento/nunca vai ser zero) e parcial (pode existir ou não); 
+               
+	#Aula 07 - Tipos de Entidades Fracas
+
+*Tipos de entidades: 
+- Fracas(dependem de outra);(retângulo com 2 linhas internas)
+- Fortes;
+
+*Entidades: classes/objetos --> retângulo 
+
+*Relacionamentos: Agregações --> Losangulos
+
+*Atributos:Propriedades elementares --> Elipses 
+
+*Weak(fraca) entidades, relacionamentos --> retângulo com 2 margens 
+
+*Chave parcial: linha pontilhada 
+
+*Chave principal: Linha contínua 
+
+*Dependência de existência: ||
+
+	#Aula 08 - Refinando o design ER para company 
+
+*Refinou o projeto exemplo;
+
+	#Aula 09 - Alternativas - UML 
+
+*Linguagem padronizada para desenvolvimento de software;
+*Trabalha com visões: interpretada e construída;
+
+- Liberdade para o desenvolvedor;
+- Compreensão facilitada;
+- Orientação a objeto;
+
+*Visão lógica,visão de implementação, visão dinâmica, 
+visão de processo, visão de implantação e uma visão de casos
+de uso;
+
+*Casos de uso, classe e o de interação são os principais 
+diagramas utilizados;
+
+*Diagrama UML --> Diagrama estrutural e o diagrama comportamental;
+
+*Associações na uml são relacionamentos;
+
+	#Aula 10 - Relacionamentos de Alto Grau 
+
+* Relacionamento n-ário 
+
+- ternário, ...n, N-ário 
+- Perspectiva diferente do binário 
+
+*Obs: Instâncis refletem a visão;
+
+*As vezes pode-se utilizar uma entidade fraca para suprir a neceissade
+de se colocar um relacionamento terciário;
+
+	#Aula 11 - Exemplificação de relacionamentos N-ário - Consulta médica
+
+*Por definição, relacionamentos ocorrem apenas entre entidades, não podendo haver
+relacionamento ocorrendo com relacionamento;
+
+*Agregação;
+
+	#Aula 12 - Exemplificação de relacionamentos N-ário - Curso e entrevista
+
+*Prestar atenção no que você deseja representar;
+*Para representar de maneira correta o contexto, utilizando 
+relacionamentos e entidades;

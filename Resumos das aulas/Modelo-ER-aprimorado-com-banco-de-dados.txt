@@ -1,0 +1,168 @@
+	#Aula 01 - Modelo EER extendido
+Modelo Enhanced ER
+
+*EER: Novos conceitos semânticos 
+- Desenvolvidos fora da área de BDs
+- Diagrama ERR 
+
+ *Entidades --> Objetos
+
+// Generalização e especialização 
+// Categoria ou Union Type
+
+*Superclasses
+
+*Herança: Atributo e relacionamento  
+
+*Subclasses(é um objeto distinto no BD), depende do contexto do BD 
+
+*A ideia de subclasse & subtipo, ela surge quando é necessário representar
+mais de uma classe dentro de uma entidade geral, podendo agrupar as classes com propriedades
+comuns;
+
+*Classe mãe (superclasses) --> Comportamento e Estado gerais 
+*Classe filho(a)(subclasses) --> Comportamento e estado específicos 
+
+	#Aula 02 - Herança 
+
+* Princípio próprio à programação orientada a objetos(POO) que permite criar 
+uma nova classe a partir de uma já existente.
+
+- Agregar atributos e métodos;
+- Reutilização de código;
+- Especialização de classes
+
+*Os relacionamentos definem os papéis das entidades envolvidas naquele relacionamento;
+
+	#Aula 03 - Especialização e Generalização 
+
+* Especialização: Está relacionada a Subclasses 
+* Conjunto de subclasses --> tipo de entidade
+* Diferenciação: propriedade, atributos específicos de uma determinada subclasse;
+
+- Instâncias das superclasse e subclasses;
+- Mesma representação de mundo real;
+- Papel especializado;
+
+- Atributos aplicados a algumas entidades;
+- Relacionamentos específicos com subclasses;
+- A entidade gera uma subclasse
+
+	#Aula 04 - Generalização versus Especialização 
+
+*Inverso da especialização;
+*Propriedades comuns as entidades;
+
+- Informações que façam sentido para a minha modelagem;
+- Abstração é tornar algo geral;
+
+- A generalização gera uma superclasse;
+- Você já tem o que precisa com a especificação e ai você generaliza
+para deixar mais sofisticado o seu modelo;
+
+	#Aula 05 - Constraints de generalização e especialização - parte 01
+
+* Constraint:
+- Predicated-defined (condição)
+- Attribute-defined specialization 
+- User-defined 
+
+*Constraints que estão relacionadas a especialização:
+
+- Disjointness constraint; O D está relacionado a conjuntos disjuntos; Eu tenho um "OU";
+- Overlapping; Aqui existe a permissão de uma sobreposição, uma entidade ser isso e aquilo ao mesmo tempo;
+- Completeness constraint; --> Total(pertencimento mandatório/obrigatório) ou Parcial (Particiação Opcional)
+
+*Regras associadas a esse contexto de especialização e generalização
+
+- Deletar/remover 
+/Superclasse --> Subclasses (é obrigado que quando uma superclasse for removida, suas subclasses associados a superclasse
+também sejam removidas)
+
+- Inserção 
+/Entidade em superclasse --> predicated-defined 
+/Entidade em superclasse com total --> subclasse match 
+
+	#Aula 06 - Hierárquia & Rede de especialização 
+
+*As duas trazem restrições relacionadas a subclasses
+
+* Hierárquia de especialização - Uma subclasse pode ter apenas 1 pai;
+
+* Rede de especialização - Uma subclasse pode ter apenas + de 1 pai;
+
+*Requisitos que precisam ser analisados quando for mapear: (EXEMPLO QUE ELA PASSOU)
+
+- Rastreamento das x entidades & overlaping de entidades
+- Tipos definidos de pessoas 
+- Informação dos aluminis(ex-estudantes) - grau acadêmico 
+- Estudantes graduados ou não;
+
+*Uma subclasse pode ser uma superclasse de outra subclasse;
+
+*Herança múltipla = Ocorre quando uma subclasse tem mais de 1 pai, superclasse;
+
+	#Aula 07 - Modelagem de Union Types usando categorias;
+
+* Coleção de objetos de diferentes tipos de entidades;
+*Representação: Subclasses
+
+*Tipo de relacionamento que visa agregar informações de tipo de entidades diferentes 
+
+- Union Type --> Parcial ou Total 
+
+//Parcial é opcional e a total é obrigatória; 
+
+*A especialização/generalização esta lidando com o mesmo tipo de entidade;
+
+*Para tipos de entidades diferentes, utiliza-se union type/categorização 
+
+	#Aula 08 - Esquema EER & Definições formais 
+
+	#Aula 09 - Decisão sobre Design de BD & UML 
+
+* Sub/SuperClasses: Linha tênue entre Acurácia X Desordem 
+- Merge de subclasse em uma superclasse: s/ relacionamentos e poucos atributos
+- Union Types: Evitados por padrão;
+- Escolhas guiadas pelo mini-mundo; 
+- Todas as decisões são baseadas no contexto, na narrativa;
+
+ *Representando por UML 
+
+- Foco na modelagem de dados
+- Diagrama de classes 
+- Classes concretas 
+
+Nomenclatura: Classe base e classes (nós) folhas
+
+	#Aula 10 - Terminologias Alternativas - Parte 01
+
+* Knowledge representation (KR) --> Uma parte da IA que acaba se preocupando com a forma
+na qual os agentes acabam raciocinando sobre alguns comportamentos
+
+- Permite que a máquina aprenda;
+
+* Ontologia 
+
+	#Aula 11 - Terminologias Alternativas - Parte 02
+
+* Ontologia --> Como definir o mundo real; Taxiomas;
+
+-Para descrever a investigação filosófica sobre a existência englobando os conceitos de ser o que existe;
+- Open world assumption;
+
+*Similaridades --> Processo de abstração para identificação de componentes;
+ --> Prove recursos para modelagem de dados;
+
+*KR:
+- Modelagem semântica - mais abragente: regras, conhecimento espacial e temporal;
+- Reasoning mechanisms;
+- Mistura de instância e esquema;
+
+*Conceitos abstratos:
+- Classificação e instanciação;
+- Identificação;
+- Especialização e generalização;
+- Agregação e associação;
+
+*Ontologia alimenta o BD com informações sobre o domínio, suas propriedades e relações;

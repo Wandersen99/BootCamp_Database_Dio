@@ -1,0 +1,51 @@
+
+#Aula 01 - Introdução à modelagem de dados - Parte 1
+
+* A modelagem vem para termos uma maior compreensão
+do sistema e conseguir economizar o tempo de implementação
+daquele sistema;
+
+*Pode ser subdividida em determinados contextos:
+
+- Representação 
+
+- Modelo 
+
+- Referência 
+
+*Servir de base para outros cenários;
+
+*Modelo conceitual --> representação gráfica 
+*Modelo físico --> Implementação do sistema;
+
+*Fases da modelagem:
+- Mini mundo (delimitar o contexto dos dados)
+- Alto nível (requisitos para criação do modelo)
+- Esquema (definir a estrutura relacional)
+- SGBD (implementar - criar o DB) 
+
+*Modelos de alto nível:
+
+- Entidade-Relacionamento; (Que vai ser usado)
+- UML(Unified Modeling language)
+
+//Atributo = representa uma característica da minha entidade.
+
+#Aula 02 - Introdução à modelagem de dados - Parte 2
+
+*Vamos utilizar a SQL que é uma linguagem declarativa que serve
+para consultar os dados no sgbds; (baseada na teoria de conjuntos)
+
+#Aula 03 - Instalação MySQL windows 
+
+#Aula 04 - Instalação do PostgreSQL Windows
+
+#Aula 05 - Instalação MySQL Linux 
+
+#Aula 06 - Instalação do PostgreSQL Linux
+
+#Aula 07 - Explorando Comandos Básicos SQL 
+
+
+
+

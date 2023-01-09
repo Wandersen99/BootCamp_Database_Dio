@@ -1,0 +1,277 @@
+	#Aula 01 - Apresentação do roteiro do curso 
+
+* Pré-requisitos 
+
+- Pensamento computacional;
+- Modelagem de dados;
+- Modelo Entidade-relacionamento;
+
+	#Aula 02 - Conceitos de Modelo Relacional: Tupla, Atributo e 
+relação - Parte 01 
+
+* Modelo relacional --> coleção de relação 
+
+* Tabelas X Arquivos 
+
+* Entidade --> está relacionada com o nosso conceito de mundo real;
+
+fla files -->  classe x objeto 
+
+- Relação é um conceito mais abstrato; 
+- Arquivos são como os dados são efetivamente armazenados; 
+
+- Tupla --> Linha da tabela; Instância da minha tabela;
+- Atributo --> Propriedade da relação; 
+- Relação --> Classe abstrata com a classe que vai usar;
+ (Classe abstrata vai servir de parâmetro)
+
+*Valores atômicos --> São indivisiveis, não podem ser separados;
+*Grupos: especificando nomes (valores atômicos são separados por grupo)
+
+*Domínio: caracterizado por seus valores, quantidade de valores e tipos de dados;
+- Cada atributo tem seu domínio;
+
+	#Aula 03 - Conceitos de Modelo Relacional: Tupla, Atributo e 
+relação - Parte 02 
+
+* R(A1,A2,A3,...,An) 
+
+- R: Relação abstrata;
+- Ai: Atributo;
+- D: Domínio; 
+- Grau da relação vai ser especificado pela quantidade de atributos que ela possui;
+
+- A ideia de relação não traz consigo a ideia de ordenação;
+
+	#Aula 04 - Conceitos de Modelo Relacional: Cardinalidade, Domínio e Relação
+
+* r = instância da relação 
+  R = Relação (representa uma parcela do produto cartesiano)
+ 
+*Da cardinalidade, podemos tirar o total de instâncias;
+
+- É possível ter diferentes atributos relacionados a um mesmo domínio; 
+- É possível diferenciar o que cada atributo representa para a relação na tabela, através do nome dado a esse atributo 
+e o que ele representa no contexto do mundo real;
+
+*Características da relação 
+
+- Relação != arquivo != tabela
+
+- Tabela - A primeira linha da tabela vai ser onde estão localizados os atributos e nas demais, as instâncias, as tuplas,
+estrutura bem definida;
+
+- Arquivo - Persistência na memória (faz através dos ponteiros)
+
+- Relação - ao invés de uma lista, traz um conjunto, traz a ideia de modelo; 
+   (Desprovida de ordenação)
+
+	#Aula 05 - Conceitos de Modelo Relacional: Conjunto de Tuplas 
+
+* lista de tuplas: possui ordenação, sequência bem definida dos dados;
+
+ - conjunto de tuplas: nível abstrato; agregado de elementos;
+
+ - Não pode ter 2 tuplas iguais;  
+
+ - Usar a ideia mais próxima do mundo real; 
+
+	#Aula 06 - Conceitos de Modelo Relacional: Valores Nulos
+
+* Valores nulos: (cenários)
+
+- Valor desconhecido; 
+- Valor existente mais indisponível; 
+- Atributo não se aplica; 
+- Valor indefinido;
+
+*Para impedir a inserção de um valor nulo, é usado o not-null;
+
+*Preposições são equivalentes as instâncias; 
+
+	#Aula 07 - Lógica de predicado dentro do mundo de SGBDS
+
+* O predicado, formado por um ou mais verbos, é aquilo que se declara sobre a ação
+do sujeito, concordando em número e pessoa com ele.
+
+- Lógica de predicados --> validade de argumentos;
+
+* Uppercase: Relação é definida por uma letra maiúscula: R,Q
+* Lowercase: Estado(instância) da relação - q,r,s 
+* Letras: Tuplas - t, u, v 
+* Nome atributo: Papel do atributo dentro da entidade;(boa prática)
+
+	#Aula 08 - Constraints do Modelo Relacional 
+
+* Composição do mini mundo(parcela do mundo real) 
+
+* Categorizadas: 
+
+- Inheret Model-based Constraints (características das relações) - delimitar o comportamento do modelo;
+- Schema-base Constraints (DDL)
+- Application-base Constraints - Dentro da aplicação do usuário;
+
+*Dependência de dados:
+
+--> Dependências funcionais 
+--> Dependências Multivaloradas 
+
+*Normalização = resolver problemas, verificação da estrutura;
+
+	#Aula 09 - Constraints baseadas no esquema do banco de dados
+
+* Definir um conjunto numa tupla é não gerar repetição;
+
+- Relação --> Conjunto de tuplas;
+- Conjunto de informações define a tupla;
+
+- SK = Subconjunto de atributos;
+- Chave: Identificador, vem para identificar uma tupla dentro do conjunto;
+- Superchave: Identificador de maneira mais abrangente de uma tupla; Identifica unicamente uma tupla dentro da relação; 
+
+- Para escolher uma chave, escolher o atributo que possui o menor número de elementos, o mais simples; 
+
+- As constraints herdadas a partir do modelo, são as chaves;
+
+- Chave candidata é aquela que poderia ser a chave primária; 
+- Primary key nunca pode ser nula;
+- Chave candidata também não pode ser nula; 
+
+	#Aula 10 - SGBDs e esquemas relacionais
+
+* SGBD é um subconjunto de relações (S={R¹,R²,...,Rn})
+
+- As constraints podem ser definidas utilizando DDL - Data Definition Language (Create, Drop, Insert, Rename)
+
+-> DML --> Insert, Update, Delete, Merge; (criar o esquema)
+-> DCL --> Grant, Revoke;
+-> DQL --> Select;
+
+* Como manter um estado válido?
+ 
+- Constraints de integridade; (vem a partir da definição das primarys keys)
+- Constraints de domínio, chave, not null;
+
+Integridade de entidade | Integridade Referencial  
+
+	#Aula 11 - Integridade Referencial e de Entidade e Chaves Estrangeiras 
+
+* Chave primária != Null 
+* Consistência entre entidades; 
+
+ *Integridade de entidade: Garantir a consistência dentro de cada tabela; 
+ *Integridade Referencial: Visa buscar a conexão entre as tabelas; A chave estrangeira;
+
+*Chave estrangeira:
+
+* Regras:
+
+- Domínio dos atributos de FK = Domínio dos atributos da PK 
+- Vai ser definida a partir da DDL; 
+
+*Outras Constraints 
+
+- Constraints - semântica 
+- Triggers (gatilhos) & Assertions
+
+- Restrições de Estado;          
+
+Podem ser realizadas através das aplicações;
+
+- Restrições de Transição;  
+
+	#Aula 12 - Mapeamento ER-Relacional 
+
+* Mapeando 
+
+- Design Lógico do projeto 
+
+- Mapeamento do modelo de dados
+
+* Algoritmo de mapeamento 
+
+*Referência 
+
+- Atributos de valor único(single-values)
+- PK - primary key (simples ou composta?) & Unique key 
+- Constraint de Entidade e referencial 
+
+* Entidades fortes(regulares)
+
+* Entidades fracas (dependentes)
+
+ 	#Aula 13 - Mapeamento de relacionamento binários 1:1
+
+-Implica em uma participação total; 
+
+* Foreign Key 
+
+* Merge dos relacionamentos (mesclar 2 entidades em 1) 
+
+* Cross-reference (geralmente ocorre em relacionamentos N:M 
+ - Um relacionamento virando uma entidade;
+
+	#Aula 14 - Mapeamento de relacionamentos binários 1:N
+
+* Foreing key (Nesse caso, a FK fica do lado onde a cardinalidade é N)
+
+* Relationship relation - A partir de uma relação entre 2 entidades, vai se dar uma nova relação, onde 
+vai ter as foreing key das 2 entidades nessa relação nova;
+
+	#Aula 15 - Mapeamento de Relacionamentos Binários N:M
+
+* Relationship relation 
+
+- PK da primeira entidade com PK da segunda entidade e um relacionamento entre 2 ou mais entidades
+virando uma nova entidade, uma nova tabela com Pk da primeira + Pk da segunda e atributos relacionados
+a ela; 
+
+	#Aula 16 - Mapeando atributos para o modelo relacional
+
+* Componentes simples 
+
+* Atributos compostos --> Transformar em componentes simples 
+
+* Atributo multivalorados --> Criar uma tabela só para eles com atributos que estavam compando ele 
+como atributos da tabela; (FK da entidade forte nele)
+
+	#Aula 17 - Mapeamento de relacionamentos N-ários
+
+* Para representar um relacionamento n-ário é criado um relationship relation;
+- Cria-se uma nova tabela para o relacionamento representado entre as +2 entidades;
+ (As pk de cada entidade fazem parte dessa nova tabela criada sendo uma chave composta)
+
+- Atributo chave --> PK ou candidata chave
+
+	#Aula 18 - Mapeando os componentes do EER - parte 01
+
+- Especialização:
+--> Única tabela 
+--> Múltiplas tabelas
+
+*Opções: 
+- Múltiplas relações - Sub/superclasse
+- Múltiplas relações - Subclasse
+- Relação única - 1 tipo de atributo 
+- Relação única - múltiplos tipos de atributo
+
+*Relação L --> Superclasses
+
+*Relação Li --> Subclasses
+
+	#Aula 19 - Mapeando os componentes do EER - parte 02
+
+*Union Type:
+
+- Entidades diferentes;
+- Superclasses;
+
+- Chave substituta --> Chave primária e uma Chave estrangeira
+(Criar um atributo comum para as entidades diferentes)
+
+	#Aula 20 - Estudo de caso: Mapeando o Esquema Conceitual (ER) para relacional 
+dentro do contexto de Ordem de serviço;
+
+ 
+
+

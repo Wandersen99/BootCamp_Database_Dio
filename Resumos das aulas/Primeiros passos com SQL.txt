@@ -1,0 +1,378 @@
+	#Aula 01 - Introdução ao SQL
+
+* SQL Básico, DDL e DML
+*Explorando SGBDs: MySQL e PostgreSQL 
+*Desafio 
+
+-Linguagem para Manipulação de dados;
+-Execução de Operações 
+
+*Objetivo:
+- Modificação de dados e estrutura;
+- Adicionar, remover ou atualizar linhas; 
+- Recuperação de um subconjunto de info do BD;
+
+*Classificações:
+
+- DDL: Data Definition Language  
+- DML: Data Manipulation Language 
+- DCL: Data Control Language
+- DQL: Data Query Language 
+
+	#Aula 02 - 
+
+* DDL (Utilizada pelos DBAs)
+
+CREATE|DROP|ALTER 
+
+INSERT|UPDATE|DELETE
+
+RENAME|TRUNCATE|MERGE 
+
+*Atribuições do DBA:
+-Determinar quais são os usuários que vão utilizar;
+-Criar os esquema;
+-Realizar statements;
+-Indexing;
+
+*CREATE DATABASE Statement
+
+	#Aula 03 - Explorando um primeiro exemplo utilizando DDL
+
+* Exemplo da criação de uma tabela, um database utilizando DDL.
+
+	#Aula 04 - Primeiro contato com SQL e MySQL
+
+*Quando a gente cria um database ou schema, o sgbd entende como a mesma coisa;
+*Quando seleciono um schema ele me retorna a lista de banco de dados;
+*O schema é a descrição do banco de dados;
+
+-Campos vão ser atributos na tabela;
+
+	#Aula 05 - Considerações sobre o ambiente do SGBD
+
+* Tem permissão de acesso para realizar o statement?
+* Sintaxe do statement está correta?
+* Verificar se o SGBD está instalado local ou em um servidor?
+-IP, Proxy,Firewal, precisa acessar algo antes dele?
+
+	#Aula 06 - Criando meu Primeiro esquema no MySQL - Parte 01 
+
+* Criando a tabela person no workbench;
+	
+	#Aula 07 - Criando meu Primeiro esquema no MySQL - parte 02
+
+*Forma de recuperar as constraints que foram setadas no banco de dados:
+
+select * from information_schema.table_constraints 
+where constraint_schema = 'nome do database';
+
+	#Aula 08 - Populando o Banco de dados do meu primeiro exemplo 
+
+* descrição da tabela: desc tabela
+* inserir informações dentro de uma tabela: 
+
+insert into person values ('1','Carolina','Silva','F','1979-08-21',
+                           'rua tal', 'cidade j', 'RJ', 'Brasil', '26059-89'); 
+
+	#Aula 09 - Continuando com as classificações{DML, DCL e DQL} Statements, claúsulas, termos
+e esquema;
+
+* DML - Data Manipulation Language -> Maioria dos usuários vão utilizar para consumir o conteúdo daquele banco de dados;
+
+*Insert|Update
+
+*Delete|Merge 
+
+*DCL - Data Control Language - Utilizado pelo DBA 
+
+Grant|Revoke --> fornecer e retirar permissões 
+
+*DQL - Data Query Language 
+
+Select 
+
+*Statement --> Estado do banco de dados;
+
+- Comando/Instrução 
+- Reconhecido pelo BD 
+- Retorno: Registro de dados 
+
+*Cláusulas SQL -- relacionadas aos comandos
+
+-Função -> instrução 
+
+-Algumas são obrigatórios 
+
+-   O * é pra retornar tudo;
+
+*Cláusulas SQL:
+ 
+- SELECT
+- FROM
+- WHERE
+- ORDER BY
+- GROUP BY
+- HAVING 
+
+* Termos-SQL
+
+-Identificador(relacionado as chaves, a maneira que conseguimos localizar as tuplas dentro da nossa tabela)
+-Operador - relacionado as querys que vão ser executadas;
+-Constante 
+-Expressão - relacionado as querys com operadores matemáticos;
+
+	#Aula 10 - Definindo o Esquema Relacional de Company com SQL
+
+*varchar -- é variável; 
+*char -- é fixo;
+
+-Mgr_ssn --> O número de identificação do gerente;
+-Dnumber --> Numéro do departamento
+-Dname --> Nome do departamento
+
+- O final da tabela é direcionado para as constraint;
+- Quando acontecer de esquecer algo que era pra ta nas tabelas, deleta de baixo pra cima uma a uma, edita e roda tudo do início de novo.
+
+	#Aula 11 - Tipos de dados no MYSQl 
+
+* Caracteres --> Fixo(255 bytes)  | Variável (65.535);
+
+char fixed-length
+varchar variable length 
+
+-Dica é colocar CPF como char, pois não precisa fazer nenhuma operação de soma com ele;
+
+* Texts types 
+
+-mediumtext - 16,777,215 bytes
+-longtext - 4,294,967,295 characters
+
+* Conjunto de caracteres 
+- Alfabeto, português, inglês
+
+SHOW CHARACTER SET;
+
+Maxlen(determina o tamanho de um desses conjuntos de characteres da tabela)
+
+Maxlen>1 = multibyte char set 
+Maxlen = 1 conjunto simples
+
+*Texts data
+
+-Tinytext;
+-Text;
+-Mediumtexte;
+-Longtext;
+
+-Usado para textos menores(<) que 64 kbytes;
+
+*Dados numéricos:
+
+-Tinyint
+-Smallint
+-Mediumint
+-Int
+-Bigint
+- float
+- double 
+
+*Dados temporais:
+-Date 
+-Datetime
+-Timestamp
+-Year
+-Time
+
+	#Aula 12 - Constraint: Especificando Restrições em SQL
+
+* NOT NULL --> Impedir que um valor nulo seja inserido dentro de um atributo da tabela;
+
+* PK & FK -->  As chaves, primária e secundária;
+
+* DEFAULT --> Criar valor padrão para determinado atributo;
+ (Valor)
+
+* CHECK --> Verificar se os valores inseridos estão contidos dentro do domínio;
+ (DOMAIN)
+
+* DELETE --> Remover uma instância da tabela;
+ (Comportamento)
+
+*Primary Key 
+*Unique             --> Utilizar durante o CREATE TABLE
+(Esse nome tem que ser único dentro da minha tabela)
+
+*Referential Triggered Action --> Vai rejeitar se algum dado não for inserido corretamente, a 
+ação é rejeitar essas informações;
+
+*Nomear 
+*CHECK --> linha específica; 
+
+	#Aula 13 - Queries/Insertion com SQL 
+
+* SQL Queries 
+- Comportamento 
+- Multiset - not set 
+- Duplicações (Redundâncias - Pode ser desejada pelo usuário)
+       SELECT       ALL
+       FROM      
+     
+       SELECT     DISTINCT (Quero todos os salários, mas a primeira vez que ele aparece)
+       FROM 
+
+*Mapping 
+
+SELECT <lista de atributos> FROM <tabela> Where <condição>
+
+Ex: Select  bdate, adress
+    from    employee
+    where fname ='John' and minit = 'b'
+
+*Operadores:
+
+=,<,<=,>,>=, e <> -SQL 
+* +,-,*,/ - Operadores básicos 
+* And, or , xor, not - Operadores boleanos 
+*True, False - Operadores lógicos
+
+DML 
+* Subconjunto do SQL 
+* Mais utilizado (por usuário ingênuo)
+* Comandos: Insert, Delete, Update 
+
+*Valores das PK --> SMALLINT UNSIGNED; 
+                    INT, BIGINT;
+-Uma boa prática é colocar os valores da pk como autoincrement;
+
+-DESC table --> mostra informações da tabela;
+
+-2 Formas de definir as constraints: 1 é no momento da criação do schema e a 2 é quando o schema já foi criado
+e precisa definir as constraint
+
+	#Aula 14 - Adicionando Constraints ao nosso banco de dados
+
+*schema é a descrição do banco de dados;
+
+*Comando para consultar todas as constraints da tabela:
+
+  select * from information_schema.table_constraints
+  	where constraint_schema ='nome do banco de dados';
+
+*Comando para consultar todas as tabelas que estão sendo referenciadas 
+a partir das constraints da tabela:
+
+	select * from information_schema.referential_constraints
+  	where constraint_schema ='nome do banco de dados';
+
+	#Aula 15 - Adicionando constraints ao nosso banco de dados com Alter Table 
+
+* alter table employee 
+	add constraint fk_employee
+	foreing key(Super_ssn) references employee(Ssn);
+	on delete set null;
+	on update cascade;
+
+
+*alter table employee modify Dno int not null default 1;
+*Modificar uma constraint 
+
+alter table departament drop constraint departament_ibfk_1;
+alter table departament 
+	add constraint fk_dept foreign key (Mgr_ssn) references employee(Ssn)
+	on update cascade;
+
+
+alter table dept_locations drop constraint fk_dept_locations;
+alter table dept_locations 
+	add constraint fk_dept_locations foreign key (Dnumber) references departament(Dnumber)
+	on delete cascade;
+	on update cascade;
+
+
+*Há uma relação de dependência quando a chave primaria de uma tabela é também a sua chave secundária;
+
+	#Aula 16 - Persistindo informações no banco de dados Employee
+
+*Inserção de dados no bd company;
+
+https://github.com/julianazanelatto/mysql_sql_database_specialist/blob/main/M%C3%B3dulo%203/M%C3%B3dulo3_curso2/insercao_de_dados_e_queries_sql.sql
+
+	#Aula 17 - Recuperando dados com Queries SQL;
+
+*Coloquei no código do SQL project company, as informações;
+
+	#Aula 18 - Nomes, Aliasing e Variação de Tuplas - SQL 
+
+-Aliasing (Ou AS Statement): Maneira de renomear atributos sejam eles persistidos ou derivados;
+
+-Where: Onde tal coisa acontece, é um filtro; Coloca-se uma condição;
+
+- Quando usar o Aliasing? Quando os nomes dos atributos causarem ambiguidade;
+ E precisar de esclarecimento;
+
+- Uma maneira por exemplo:
+ 	O atributo Fname da tabela employee passaria a ser EMPLOYEE.Fname;
+	Outra forma: E.Fname, E.Lname 
+
+- Na mesma tabela, através de um querie, posso dar um pseudonimo para a tabela. Ex:
+	(e para os atributos)
+Select	E.Fname, E.Lname, S.Fname, S.Lame
+From	Employee as E, Employee as S 
+Where	E.Super_ssn = S.Ssn;
+
+- É possível renomear todos os atributos de uma tabela, a apartir de uma Querie;
+
+Employee as E(Fn,Mi,Ln,Ssn,Bd, Addr,Sex,Sal,Sssn, Dno)
+
+	#Aula 19 - Realizando Queries com Alias
+
+* Retirar a ambiguidade através do alias ou AS Statement;
+
+select Dname, l.Dlocation  
+	from departament as d, dept_locations as l 
+	where d.Dnumber = l.Dnumber;
+
+*Utilizando concatenação, agrupamento de palavras;
+
+	select concat(Fname, ' ', Lname) as Employee from employee;
+
+	#Aula 20 - When Good Statements Go Bad
+
+* Problemas:
+
+- PK & FK inexistentes;
+- Valores violados;
+- Conversão inválida de dados;
+
+-Enum: Range de possibilidades;
+
+-Conversão de dado do tipo date para string;
+	'DEC-21-1980'
+	str_to_date('DEC-21-1980', '%b-%d-%Y')
+
+	#Aula 21 - MYSQL e PostgreeSQL e suas diferenças
+
+*Postgreesql 
+
+- Otimizado para aplicações complexas;
+- Grande Volume de dados/informações críticas;
+
+         Ex: E-commerce de médio a grande porte;
+
+*MySQL 
+
+- Possui agilidade e versatilidade;
+- Operações mais simples;
+- Processamento e tempo curto de resposta;
+
+Ex: Site | Fórum |Portal 
+
+*Ponderações 
+
+- Precisa de RollBack? Não --> MySQL 
+                       Sim --> Postgree
+
+- Precisa de agilidade? MySql
+- Fácil utilização;
+- Operação mais simplificada;

@@ -1,0 +1,158 @@
+
+ #Aula 01 - Arquitetura de BD: Modelos 
+
+* Modelo --> Abstração = Essencial
+
+Data Model(Modelo de dados) 
+
+-Definir requisitos funcionais e não funcionais
+do meu sistema;
+-Classificação esta relacionada a estrutura; 
+
+*Modelo de dados conceitual (visão de alto nível --> Entidade, atributos e relacionamentos)
+- Modelo Entidade-Relacionamento;
+- Generalização;
+
+*Modelo de dados físico(especialista/implementação do sistema)
+- Vai tratar de Especifidades do sistema;
+- índices, hashes; qual tipo de estrutura de dados vai ser implementada;
+
+*Modelo de dados de implementação(representacional)
+- Fica entre o conceitual e o físico;
+- Constrains;
+- Operações;
+- Linguagens; 
+- Modelo de dados relacional;
+- Modelos hierárquicos; 
+
+* São modelos de dados Auto-descritivos --> Descrição + dados
+
+ #Aula 02 - Arquitetura de BD: Esquema, instâncias e estados de um BDs
+
+* Esquema --> Descrição concisa do banco de dados, objetos, relacionamentos, entidades;
+-Persistir dados;
+-Definir a estrutura base;
+-Dentro do esquema, os dados são chamados de construtores;
+- Base geral para qualquer instância que sejam persistidas
+nessa estrutura;
+- Descrição é feita através de diagramas;
+
+*Modificação de estado --> Insert, Delet, Update;
+
+- Estado inicial é condizente com o esquema quando ainda não foi inserido nenhum dado;
+- Esquema é equivalente ao estado inicial do meu sistema;
+- Mudança = Evolução do esquema;
+
+*Meta dados 
+
+- Descrição esquema;
+- Construtores;
+- Constrains; 
+- Estrutura do meu banco de dados;
+
+ #Aula 03 - Three-Schema Architecture
+
+* Isolamento data/program 
+
+* Catálogo 
+
+* Views 
+
+- Distribuições dos arquivos, como eles vão ser persistidos, esta atrelado ao modelo de 
+dados físicos, está na parte mais interna da arquitetura;
+
+- É necessário mapear do físico para o conceitual e do conceitual para o usuário final;
+
+- Cada nível tem sua especificidade; 
+
+- Modelo conceitual é onde fica a base, onde defino as views a partir do grupo que vai utilizar
+aqueles dados;
+
+- Mais utilizado para fins de estudo;
+
+- Camadas:
+01 - física (criar uma representação dos meus dados a partir de uma série
+de requisitos);
+02 - lógica (conceitual e aplicação do usuário);
+
+ #Aula 04 - Linguagens para SGBD 
+
+SQL --> Modelo relacional;
+
+*DDL - Linguagem de definição de dados; (utilizada para implementar o esquema, inserir os dados)
+
+*SDL - linguagem relacionada a definição de dados/armazenamento de dados;
+
+*VDL - Está relacionada a views; 
+
+
+*DML (linguagem de manipulação de dados) 
+    - Alto nível|Não procedural - As operações de banco de dados são executadas por tempo; Quero recuperar isso, mesmo sem saber como o SGBD funciona. 
+    - Baixo nível|Procedural - Manipulada através de uma aplicação de usuário; Vou me preocupar como recuperar tal coisa; 
+
+  #Aula 05 - Interfaces de SGBDs
+
+* Interfaces de consultas de informações;
+- Web clients;
+- App Mobile;
+- Forms;
+- GUI; 
+- NLI - natural linguage interface;
+- Pesquisa Keyword;
+- Speech input/output (contexto limitado);
+- Interfaces; 
+
+         --> Naive: Esta associado as operações repetidas que ele pode fazer;
+         --> DBA;
+  
+  #Aula 06 - Ambientes e utilities de SGBDs
+
+* SGBDs --> é um software modularizado com vários outros softwares modularizados;
+
+* 2 características ligadas ao SGBDS;
+
+01 - Buffering & 02 Caching  
+ *Algumas ferramentas criadas para o armazenamento/monitoramenteo 
+de dados (utilities - gerenciamento);
+
+*Utilities gerenciamento:
+- Loading;
+- Backup; 
+- Reorganização do storage;
+- Monitoramento;
+ 
+(DB designer)
+
+ #Aula 07 Arquitetura modelo cliente-servidor 
+
+ //A arquitetura de um SGBD pode ser centralizada ou distribuida;
+
+* Arquitetura lógica e física 
+cliente/servidor 
+- Two tier;
+
+* Essa arquitetura nos garante uma maior simplicidade & compatibilidade com o mundo real;
+
+Three-tier --> arquitetura de 3 camadas
+
+01 - Cliente; 
+02 - Web server ou aplicação servidor; 
+03- Database server;
+     Ou seja, SGBDs --> Back-end --> Front-end
+
+ #Aula 08 Classificação de SGBDs
+
+*Parâmetros -->- Modelo de dados; 
+               - N° de Usuários;
+               - N° de sites;
+               - Custos;
+               - Tipo de caminho de acesso; 
+
+* Performance; 
+* OLTP;
+
+ *Alto nível(tabela se relacionando com os arquivos)
+  View --> usário;
+
+ #Aula 09 Considerações finais 
+

@@ -1,0 +1,171 @@
+	#Aula 01 - Order by: Cláusulas de ordenação com SQL
+
+*Recuperação dos dados é ordenada?
+- Os dados não vem ordenados;
+- Conjunto não tem ordenação;
+*Conseguimos realizar a ordenação através do ORDER BY;
+
+*ORDER BY 
+- Cláusula SQL;
+- Ordenação por coluna;
+- Expressões baseadas em dados;
+- + De um valor;
+
+	EX de querie: Select Fname,Lname, Dno from employee order by(Dno);
+
+*A ordenação pode ser Ascendente(Menor para maior(PADRÃO)) ou Descendente(maior para menor); 
+
+- SELECT<attribute list>
+- FROM <table list>
+-WHERE <condition> 
+-ORDER BY <attribute list>
+
+*Where statement?
+-critério a ser considerado na query ao recuperar a informação;
+
+*Estrutura mínima para ordenação:
+
+-select 
+-from 
+-order by <attribute list> desc;(se as informações precisarem vir de forma descendente coloca o desc no final, caso não
+por padrão as informações vão vir de forma ascendente;
+
+Limit -> extensão do sql;
+
+Ex: SELECT idAccount
+	FROM accounts
+	WHERE type='PJ'
+	ORDER BY amount LIMIT 5;
+	
+	#Aula 02 - Ordenação com SQL utilizando expressões;
+
+* Order by vai está relacionada a 1 ou mais atributos;
+
+- Ordenação dos dados para trazer consistência e sequência dos registros;
+
+- Alias para fornecer nomenclatura adequada á dados derivados ou armazenados;
+
+- Tratar os dados não armazenados através de uma expressão dentro do Order BY;
+
+Classificação de dados:
+- Operadores numéricos;
+- Nomes dos atributos;
+- + de atributo;
+- DESC ou ASC; (sentido da ordenação)
+
+*Para ordenar registros:
+
+SELECT <attribute list>
+FROM <table list>
+[WHERE <condition>]
+[ORDER BY <EXPRESSION>]
+[DESC | ASC];
+
+	#Aula 03 - Aplicando Ordenação as Consultas de Banco de Dados;
+
+*Cláusulas de Ordenação;
+
+- Ordenar as tuplas que estão sendo resultados de uma consulta sql;
+- Colocar o distinct para evitar redundância;
+- Pode definir uma key word de ASC ou Desc para cada atributo dentro da cláusula
+order by, para fazer a ordenação;
+
+*Prática no workbench;
+
+-Cláusulas obrigatórias no SQL para realizar uma querie:
+
+Select 
+From 
+
+	#Aula 04 - Funções de agregação com SQL
+
+* Funções de agrupamento 
+
+- Agregar
+- Aglutinar 
+- Agrupar 
+
+*Agrupamento de registros
+
+- Count: Registros
+- Sum: Somatório
+- Min: Valor mínimo - atributo 
+- Max: Valor máximo - atributo 
+- Average: média de valor - atributo 
+
+*Pode usar essas funções de agregação tanto com o Select como com o Having;
+
+- Agrupamento de registros:
+	EX: select year, count(*) as record_count from station_data where tornado = 1 group by year;
+	Ex: Select count(*) as record_count from station_data;
+	
+
+*Obs: Um dado só se torna uma informação quando é dado sentido a ela;
+
+	#Aula 05 - GROUP BY: Cláusulas de agrupamento com SQL
+
+* Definir grupos
+
+- Atributos de relacionamentos 
+- Grupos de valores 
+
+Ex: Select Dno, Count(*), AVG (Salary)
+	from employee
+	group by Dno;
+
+	#Aula 06 - Agrupando registros no Banco de Dados;
+
+* Average usa como avg;
+
+- Prática no workbench
+
+	#Aula 07 - Explorando cláusulas de agrupamento com SQL
+
+*Criando 3 cenários de queries utilizando o group by;
+
+	#Aula 08 - Entendendo o Having statement 
+
+* Select: Seleciona tabela e atributos 
+- Group by: grupos de valores;
+- Having: Filtragem dos grupos; Condição sobre a informação sobre o grupo;
+
+EX: Select Pnumber, Pname, Count(*) 
+	From project, works_on 
+	Where Pnumber=Pno 
+	group by Pnumber, Pname 
+	having count(*)>2;
+
+- A partir de um grupo criado, filtrar ainda mais as informações, essa é a ideia do having;
+- Order by vem por último;
+- Filtragem a partir do grupo, o having.
+
+*Estrutura da Query SQL 
+
+	Select< attribute and function list>
+	From<table list>
+	[Where<condition>]
+	[Group by< grouping attribute(s)>]
+	[Having< group condition>]
+	[Order By<attribute list>]; 
+
+Ordem de execução das queries é a de cima;
+
+*Ter cuidado pois quanto mais complexa fica a querie, mais atenção precisa tomar 
+para que o sgbd execute o que você de fato necessita;
+
+*Ter cuidado também com a preferência de execução das cláusulas;
+
+	#Aula 09 - Aplicando a cláusula Having ao Banco de dados;
+
+* Prática no Workbench
+
+	#Aula 10 - Review: Reforçando a diferença entre ORDER BY e Group By
+
+- Qual a diferença entre order by e group by?
+
+*Objetivo do order by é ordenar os dados na hora que eles são recuperados a partir de um ou mais atributos;
+
+- Passa de conjunto para lista;
+
+*Objetivo do group by -> Um grupo vai armazenar informações que são redundantes, iguais, semelhantes;
+

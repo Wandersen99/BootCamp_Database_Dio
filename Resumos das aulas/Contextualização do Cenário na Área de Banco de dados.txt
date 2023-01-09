@@ -1,0 +1,209 @@
+Anotações:
+
+Aula 01 - Introdução à Banco de Dados 
+
+- Apresentação da mentora Juliana e o objetivo geral do bootcamp, juntamente
+com a apresentação dos conteúdos que serão abordados durante o bootcamp;
+
+Aula 02 - Cenário de Dados 
+
+- Há uma diferença entre dados e informações;
+
+- Objetivo da internet é prover serviços (dos mais variados possíveis);
+- Cookies são um tipo específico de dados relacionados a protocolo http; 
+- Com os dados é possível atingir um determinado público de maneira mais
+assertiva, como por exemplo: Vender produtos, serviços para pessoas que estão
+procurando através do navegador, rede social.
+
+*SGBD --> Sistema de gerenciamento de banco de dados; 
+
+#Ex de acessos a banco de dados:
+
+- Acesso à conta do banco (a conta bancária);
+- Consulta de título(s) na biblioteca; 
+
+*Big Data --> Os 3 V: 
+
+- Velocidade --> A velocidade que os dados são produzidos é muito rápida, dados são 
+produzidos a todo momento;
+
+- Variedade --> Fontes heterogêneas, diversos tipos de dados;
+
+- Volume --> Quantidade de dados que são produzidos, as informações que são processadas e armazenadas
+a cada momento é muito grande; 
+
+Aula 03 - O que são banco de dados?
+
+-Podemos considerar uma coleção de palavras, que dentre elas existem relacionamentos
+entre os dados(então há um relacionamento para que esses dados possam ter sentido/significado),
+constituindo então um banco de dados. (Definição Geral)
+
+- Uso + restrito --> Em um SGBD, ambiente mais específico voltado ao papel de gerenciamento de 
+dados, em que esses dados são um contexto do mundo real e precisam ter coerência e um próposito;
+
+#Banco de dados não são sinônimos de SGBD.
+
+Dados --> São efetivamente um fato;
+
+- Os dados eles transmitem algum tipo de significado;
+
+- O sistema precisa ser confiável e acurado suficiente para que ele possa retroceder;
+
+Aula 04 - Sistemas de gerenciamento de banco de dados - SGBDs
+
+* Quando a gente pensa em banco de dados existem 
+4 tópicos que estão atrelados a eles, que são:
+
+01- Definição --> Tipos de dados, estrutura, constrains, as regras;
+02- Construção --> Inserção de dados;
+03- Manipulação --> Recuperação, Relatórios, updates ;
+04- Compartilhamento --> Simultaneidade, acesso;
+
+Os SGBDs possuem um ciclo de vida longo, proteção (quanto ao funcionamento e ao acesso);
+
+*SGBDs --> diversos softwares modulares estarão compondo 
+esse sgbds; 
+
+#Os metadados, estão relacionados a estrutura de um banco de 
+dados;
+- Informações que fornecem uma descrição concisa dos
+dados contidos no BD;
+
+Aula 05 - Breve histórico de SGBDs
+
+*Modelo hierárquico --> É um modelo voltado ao gerencimento 
+de informações;
+- Busca em árvore, TAD tree - com raiz;
+- Buscando registros: links e dados;
+- O relacional você tem estrutra e o hierárquico registros;
+
+*Modelo em rede --> Links -- ponteiros entre nós
+- Precisa saber a estrutra física desse banco de dados, pois
+ela não é trivial; 
+- Relacionamento --> N:M 
+
+Aula 06 - Modelo de banco de dados relacional 
+
+*SQL --> Baseado na teoria de conjuntos 
+
+-Cada entidade possui atributos específicos a ela;
+
+-Baseado na álgebra relacional 
+
+#DBA(Administrador do banco,gerencia o sgbds) 
+--> Definição das tabelas e constrains para os dados;
+--> Comandos traduzidos pelo processador LDD ou DDL(linguagem
+de definição de dados);
+
+*Comandos específicos para a manipulação dos dados;(sql)
+
+Usuários do Sistema
+#Características:
+- Altera e extrai informações;
+- Duráveis
+- Informações alteradas são duráveis(acontecem por 
+meio de transações);
+
+LMD- Linguagem de definição dos dados  
+
+#Storage & Buffer 
+
+*Gerenciador de armazenamento (movimento --> trazer
+da memória de hd para memória principal, para 
+memória ram)
+
+*Gerenciador de buffer (Troca--> trocando as informações
+de memória)
+
+Aula 07 - SGBDs mais utilizados pelo mercado
+
+*Ranking dos sgbds mais utilizados, link: https://db-engines.com/en/ranking
+
+01-Oracle --> circle,Alta escalabilidade, performance, manutenção,
+usado em grandes coorporações;
+
+02-MySQL --> circle,open source, aplicações web, mantido pela
+oracle, melhor integração com php;
+
+03-Microsoft SQL Server --> circle, Plataforma resiliente, construção robusta,
+soluções de gerenciamento;
+
+04-PostgreSQL --> circle,Robusto e consolidado, primeira escolha 
+para programadores com python, open source, modelo de dados 
+híbridos, armazenar documentos, suporte nativo;
+
+05-MongoDB --> No circle, banco que armazena dados em blocos,
+dados agrupados dentro de um mesmo bloco, não tem uma previsibilidade 
+dos dados; escalabilidade, performance;
+
+06-Redis --> equivalente a um dicionário, dados acessados com mais
+regularidade, armazenam as informações em memória, é no circle;
+performance, roda inteiramente na ram;
+
+07-ElasticSearch--> No circle, orientado a documentos,
+comumente utilizado no cenário de logs, alta escalabilidade;
+08- Acess -->Mais simples, integra com o office,pequenos negócios;
+11- Cassandra--> no circle, gratuito, open source, baseado em colunas,
+gerenciamento de larga escala,alta disponibilidade;
+12- MariaDB--> Se originou do mysql,aumento de desempenho; 
+
+*O que influencia para a escolha de um SGBDs:
+- Populariade, tempo de mercado e documentação;
+- Robustez(quanto que aguenta de demanda), confiabilidade,
+segurança(meus dados vão estar protegidos?), multiplataforma;
+
+Aula 08 - A era dos dados e o futuro da modelagem - parte 1
+
+Cientista de dados --> Preocupado em tirar conclusões, gerar soluções,
+através da análise dos dados disponíveis; 
+
+4°paradigma --> (Big) Data-driven Science;
+--> Instrumentos e simulações que geram grande volume
+de dados;
+-->Novo modelo: Base na análise e exploração de dados(e-science);
+
+Requisitos:
+
+- Composição;
+- Execução;
+- Análise;
+- Abstração;
+- Reprodutividade;
+- Reutilização;
+- Escalabilidade; 
+
+Aula 09 - A era dos dados e o futuro da modelagem - parte 2
+
+#Experimentos em larga escala
+
+*Tecnologias utilizadas: 
+
+-Paralelismo --> Múltiplos processadores operando 
+concorrentemente; (Processa mas não armazena)
+
+-Big Data --> Processamento paralelo de dados 
+persistentes e particionados;
+
+-Cloud --> Recursos de terceiros - Soluções de 
+tecnologia como serviço; 
+
+#High Performance Computing 
+ Computação de alto desempenho 
+
+*Características:
+
+- Nós de processamento;
+- Sistema de arquivos paralelos - sem persistência;
+- Modelos: MPI, OpenMP, OpenCL;
+- Acesso: HFF5 e NetCDF;
+
+#Big Data 
+(Processa e armazena)
+*Características:
+
+-Process e Storage: Nós de processamento;
+-Sistema de arquivos paralelos: persistente;
+-Modelos: MapReduce, Spark,SGBDs paralelos; 
+
+Aula 10- Novo cenário e novas tecnologias- E agora?
+

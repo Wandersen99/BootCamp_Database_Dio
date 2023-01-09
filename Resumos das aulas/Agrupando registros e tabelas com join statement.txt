@@ -1,0 +1,305 @@
+	#Aula 01 - Apresentação inicial do curso
+
+	#Aula 02 - CASE statement
+
+* Troca de um valor
+* Condição para troca
+* Mapeamento de valores de correspondência 
+
+Case WHEN    	
+		 THEN  END	
+
+-Quando alguma coisa acontece, então aplico tal condição;
+
+-WHEN --> Quando alguma coisa acontecer;
+- THEN --> Aplico tal condição;
+
+- Vai ser utilizado o Case junto com outros statements;
+
+EX:
+	UPDATE Employee 
+	SET  Salary = 
+	CASE    WHEN  Dno = 5    THEN Salary + 2000 
+		WHEN  Dno = 4    THEN Salary + 1500
+		WHEN  Dno = 1	 THEN Salary + 3000
+		ELSE  Salary + 0;
+
+Select <list attribute> case when <condition> then <condition change> end from <list tables>
+
+	#Aula 03 - Agrupamentos com CASE
+
+* Queries com cláusulas de agrupamento 
+- Deixando as informações mais interessantes para o usuário
+
+Ex:  Select year,
+	case 
+	     WHEN wind_speed >= 40 then 'HIGH'
+	     WHEN wind_speed >= 30 then 'MODERATE'
+	     ELSE 'LOW'
+		END as wind_severity.
+		count (*) as record_count
+	 from station_data 
+	group by 1,2;
+
+- Pode aplicar o case para queries de agrupamento;
+
+	#Aula 04 - O caso zero/null trick 
+
+*Filtros - valores distintos 
+* Select statement através de uma query 
+* Where
+
+*Uma vantagem do case end é que queries que antes necessitavam de uma ou + queries 
+para valores distintos que eu queira mostrar, com o case end vai precisar apenas de uma
+querie para mostrar valores distintos; 
+
+
+Select year, month, 
+sum(case when tornado = 1 then precipitation else 0 end) as tornado_precipitation,
+sum(case when tornado = 0 then precipitation else 0 end) as non_tornado_precipitation
+from station_data
+group by year,month
+
+*Do mesmo jeito que foi usado o case end com o SUM, consegue usar com as outras funções de agregação, avg,max,min.
+
+-Pode utilizar esses outros operadores também:
+MAX, AVG, MIN
+AND, OR, NOT,
+COUNT
+
+	#Aula 05 - Criando Queries com CASE statement
+
+* Set = Setando atributos, registros;
+
+	#Aula 06 - Entendendo Queries de múltiplas tabelas com JOIN
+
+* A junção esta relacionada a pegar 2 caminhos distintos de maneira que eles venham a convergir e tenham coesão entre si;
+- Pega informações diferentes, aglutina e dá sentido a elas;
+- Sentido entre registros de tabelas diferentes;
+	
+	EX: Select e.fname, e.lname, d.name 
+		from employee as e join departament 
+
+#O QUE FALTOU? Atributo de junção;
+
+*CROSS JOIN STATEMENT 	
+
+	Select pt.name, p.product_cd, p.name 
+	from product p cross join product_type as pt;
+
+		Select e.fname, e.lname, d.name 
+		from employee as e join departament as d 
+		ON e.dept_id = d.dept_id;
+	
+	ON -> Atributo de junção;
+
+Select <attributes list>
+from <table1> ft join <table2> st;
+
+- Se não utiliza um atributo de junção no join, o sgbd vai entender como um cross join, um produto cartesiano
+entre as tabelas;
+
+	Select <attributes list>
+	from <table1> ft INNER join <table2> st 
+	ON ft.common_attribute = st.common_attribute;
+
+- Quando usa o ON não precisa usar o INNER pois o sgbd entende que quando usa o atributo de junção, não é um cross 
+join e sim um Inner join;
+
+	#Aula 07 - Queries com INNER JOIN 
+
+* Um tipo de join mais utilizado dentro do mundo de sgbds, faz a combinação 
+entre os registros de uma tabela ou mais;
+
+- Falha: Linhas excluídas;
+
+* INNER JOIN (fusão das 2 tabelas de maneira que tenha coesão entre as tabelas)
+
+- Mais comum dos JOINS 
+- Linhas não correspondentes excluídas 
+- Atributo de junção --> fornecer a possibilidade de criar coesão entre as tabelas;
+
+- Permite mesclar tabelas;
+- 1+atributos junção;
+- 2 + Tabelas;
+
+*USING atributo de junção (quando se tem atributo com o mesmo nome)
+
+	#Aula 08 - Aplicando Join Statement ao cenário Employee
+
+* Inner join --> Não retorna valores que não possuem matching entre si;
+
+- Caso haja a necessidade de se utilizar um cross join, deixar explícito que é um cross join e não apenas 
+um join;
+
+	#Aula 09 - Agrupamento com mais de duas tabelas e JOIN
+
+-Ex de queries utilizando 3 tabelas
+	Select a.account_id, c.fed_id, e.fname, e.lname
+	from account as a INNER JOIN customer as c
+	on a.cust_id = c.custe_id
+	inner join employee as e
+	on a.open_emp_id = e.emp_id
+	where c.cust_type_cd = 'B';
+
+*Para entender melhor: Vou usar 2 tabelas para criar uma tabela resultante com um join e um on, depois disso é utilizar a tabela resultante
+com a terceira tabela para ter a visualização dos dados(usar outro join e on nessa parte);		
+
+*Para cada atributo de junção, você especifica uma condição entre as tabelas;
+
+* Vou precisar de 2 join para juntar essas 3 tabelas;
+
+* Se tiver alguma condição de filtro, utilizar o where no final;
+
+*3 Tabelas
+- 2 tipos de join 
+- 2 subcláusulas 
+
+* Não faz diferença a ordem que vai criar as queries utilizando as tabelas;
+- Software modular que usa otimizador;
+
+	#Aula 10 - Criando uma query SQL com JOIN entre 3 tabelas;
+
+* Um atributo de junção, altera totalmente os resultados que vão ser mostrados para o usuário 
+através da querie; 
+
+*A cláusula where vem antes do group by; 
+
+*A clásula having que é uma condição, vem após o group by;
+	- Ela diz que é para agrupar a partir de determinada condição;
+
+	#Aula 11 - A ordem importa em queries Join?
+
+* SGBD interpreta e escolhe a sequência de comandos;
+* SGBD escolhe um ponto de partida;
+- Tratar da maneira mais otimizada possível para retornar essas queries;
+
+* Tem como especificar a ordem para o SGBD?
+- Sim, através da STRAIGHT_JOIN no MYSQL;
+
+	Select STRAIGHT_JOIN 	a.account_id, c.fed_id, e.fname, e.lname
+	from account as a INNER JOIN customer as c
+	on a.cust_id = c.custe_id
+	inner join employee as e
+	on a.open_emp_id = e.emp_id
+	where c.cust_type_cd = 'B';
+
+- Forçar o sgbd a usar extritamente o que foi colocado na querie;
+- A sequência, a ordem do JOIN que o sgbd vai utilizar;
+
+	#Aula 12 - Nested(Subqueries) com JOIN Statement;
+
+Ex:
+	Select a.account_id, a.cust_ida, a.open_date, a.product_cd
+	from account a inner join 
+	
+		(select emp_id, assigned_branch_id
+		from employee
+		where start_date <'2007-01-01' and (title = 'Teller' or title =
+		'head teller')) e -- tabela resultante chamada e
+	
+	on a.open_empd_id = e.emp_id
+	Inner join 
+		
+		(select branch_id
+		 from branch 
+		  where name = 'Woburn Branch') b 
+	on e.assigned_branch_id = b.branch_id;
+
+	#Aula 13 - Self join: mesma tabela em uma query join
+
+* Quando usar? um join na mesma tabela
+	- Chave estrangeira referenciando a mesma tabela;
+
+- Posso utilizar 2 vezes a mesma tabela com o join;
+
+- Sempre fazer as junções antes de cláusulas de agrupamento e de condição(where,having);;
+
+	#Aula 14 - Comparando condições de Junção e Filtros 
+
+* Select cust_id, name 
+	from business;
+
+*Se errar a sintaxe, vai dar problema;
+
+Where --> clausula de filtro;
+
+inner join --> elimina os atributos que não tiverem correspondências 
+entre as tabelas;
+
+	#Aula 15 - Outer join statement 
+
+* Antes com o inner join, linhas sem correspondências não eram exibidas
+- Valores precisariam estar em ambas as tabelas;
+
+* Outer join --> Possa escolher se caso uma tabela não tiver um matching total 
+com a outra tabela da junção, para recuperar informações;
+
+- Matchs total 
+
+	Ex: select    
+ tabela de orientação -> from <table1> ft  outer join <table2> st 
+condição de junção ->	on ft.commom_attribute = st.commom_attribute  (devem ser iguais para conseguir realizar a junção); 
+
+*LEFT E RIGHT JOIN 
+
+-> Left, usa como referência a tabela da esquerda do join
+-> right, usa como referência a tabela da direita do join
+
+ex: left outer join 
+
+-Especificar como null caso não tenha nenhum registro correspondente nas 2 tabelas;
+
+	#Aula 16 - Quando aplicar o Left join ou outer join
+
+* No mysql quando se usa um left join sem o outer, ele entende que você esta fazendo um outer join automaticamente;
+	(quando usa o right também)
+
+* O resultado vai ser o mesmo utilizando um left outer join ou left join;
+
+*MYSQL NÃO ACEITA O OUTER JOIN APENAS, sem uma orientação;
+
+	#Aula 17 Entendendo melhor os tipos de join 
+
+* A tabela referenciada modifica o resultado da query;
+
+- Inner join não vai fazer diferença se usar a tabela da esquerda ou da direita;
+
+*JOIN -> FULL OUTER JOIN 
+
+- Busca de informações da tabela referenciada;
+
+*inner join --> intersecção, atributos comuns as duas tabelas;
+
+- LEFT JOIN = LEFT OUTER JOIN 
+- RIGTH JOIN = RIGHT OUTER JOIN 
+
+- OUTER JOIN --> fusão, se não orientar, vai pegar todas as informações das 2 tabelas e referenciar as informações 
+que não tiverem matching, colocando o valor null;
+
+- ANTI LEFT JOIN -> Tudo da tabela da esquerda que não esta na tabela da direita;
+
+- ANTI RIGHT JOIN  -> Tudo que existe na tabela da direita que não esta na tabela da esquerda elementos inerentes ao meu conjunto da direita.
+
+- ANTI OUTER JOIN -> Tudo que esta na tabela da esquerda e da direita que não possui igual correspondência
+
+- cross join -> produto cartesiano, todos os elementos de uma tabela com todos os elementos da outra; 
+
+	#Aula 18 - Explorando ainda mais natural join 
+
+* Natural join entre 2 tabelas que possuem uma condição implícita
+- Atributos comuns
+- Para poder não especificar através de um atributo de junção;
+
+- Natural join -> estou utilizando um atributo que tem um nome comum em ambas as tabelas;	
+
+	Ex: employee.Dno = dept.Dno
+
+	#Aula 19 - Referências para estudo 
+*Dúvidas?
+	>Fórum/Artigos
+	>Comunidade online(Discord)
+
+Livros complementares:
+	Getting Started with SQL: A Hands-On Approach for Beginners.
+ 

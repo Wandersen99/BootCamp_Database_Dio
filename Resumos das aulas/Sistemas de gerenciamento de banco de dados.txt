@@ -1,0 +1,201 @@
+Sistemas de Gerenciamento de Banco de dados
+
+#Aula 01 - Abordagem de SGBDs versus Abordagem Tradicional 
+
+*Abordagem de BD (sem sgbds) 
+- Redundância;
+- Esforço repetido;
+- Pode gerar inconsistência;
+
+*Principais característiscas que temos dentro de um SGBDs:
+
+- Abstração;
+- Auto-descrição --> Descrição especifíca e concisa dentro do seu sistema;
+- Isolamento; 
+- Compartilhamento --> Controle de concorrência;
+- Múltiplas visões 
+- Transação Multiuser
+
+#Aula 02 - Natureza auto-descritiva da abordagem de banco de dados;
+
+*SGBDs possuem diversos bancos de dados, desde
+que cada um possua seu schema;
+
+*SGBDs relacionais;
+- Descrição da estrutura e constrains(regras);
+- DB schema --> Esquema do banco de dados, estrutra bem 
+definidas dos dados sem a definição das instâncias(
+inserção dos dados);
+- Metadados;
+
+- NoSql --> Não possui essa descrição do banco;
+
+#Aula 03 - Isolamento program/data e abstração 
+
+* Com o SGBDs temos 2 estruturas diferentes; 
+Program-data independece --> Não mexer na aplicação com qualquer que seja a
+modificação em algum dos dados do banco de dados,
+programa e banco de dados são independentes;
+
+* Modificação acarreta em reestruturação na aplicação (sem sgbds)
+* Modificação (Sem sgbds) 
+
+*Abstração -> Independência do programa e dados;
+*Transparência --> Não preciso conhecer como é tratado os dados, por exemplo
+, a menos que seja o DBA; 
+
+#Aula 04 - Suporte à múltiplas visões dos dados:
+
+- Fornecer perspectivas distintas a cerca dos mesmos
+dados para grupos de usuários distintos;
+- Crio apartir de query(consulta) um view(visualização)
+
+#Aula 05 - Compartilhamento de dados e processamento de transações multiusuários
+
+*O mecanismo utilizado para permitir o acesso concorrente de múltiplos usuários 
+é o Concurrency Control;
+
+#Online transaction processing:
+
+-OLTP --> processamento de transações em tempo real ou online;
+-Possibilitar acesso simultâneo aos dados, mas com um controle 
+de concorrência, aonde ações realizadas sejam vistas pelos outros 
+usuários;
+- Registrar todas as operações de uma determinada operação
+organizacional(oltp);
+- Prover performance para que os usuários consigam desempenhar ações fim
+a fim, sem que haja um problema. Ex: Banco,reservas de hoteis, transportes,restaurantes;
+- Gerenciador de transações concorrentes; 
+- App Multiuser;
+- Execução sem interferência(atomicidade(ou executa tudo ou voltar não
+executa nada))
+- Cenário de Banco de dados;
+
+Decisão, utilizando transações --> transaction driven
+
+#OLAP --> cenário de data warehouse; ambiente informativo criado 
+a partir do ELT process;
+
+#Aula 06 - Abordagem de banco de dados - Quais são os atores
+em banco de dados?
+
+*Atores:
+
+- BDs Simples: Poucas pessoas estão interessadas em acessar
+aquelas informações; 
+
+- BDs Organizations: Há um setor querendo manipular e mexer
+naquele sistema; Ordem de 10k(números de acessos);
+ 
+Quando se trata de bds organizations, vamos ter:
+
+*Design(modelagem otimizada),Manutenção(equipe responsável
+por realizar uma manutenção naquele sistema) e Usabilidade(quem vai determinar
+como ele funciona, para ta satisfazendo aos requisitos do sistema);
+
+*Os atores: 
+
+- Engenheiro de softwares;
+
+-Administrador:
+.Gerenciar recursos(Base de dados,SGBD,Softwares adicionais);
+.Orquestração; 
+.Autorização de acesso;
+
+-Designers: 
+.Modelagem;
+.Identificar dados e requisitos;
+.Representação e a estrutura;
+.Fase preliminar;
+
+-Usuários; 
+.Interessados em consumir uma informação, consultar
+um dado;
+.Acesso -->querying (update, reports)
+.Categorizados 
+
+*Categorias dos usuários finais:
+- Casuais (acessam ocasionalmente informações/dados que estão no sgbds)
+- Ingênuos (Canned transactions(transações encapsuladas) -->api gráfica, erro raro)
+- Sofisticados (já tem noção,entende uma query sql,já conhecem o sistema, usuários com conhecimento sobre os bd)
+- Standalone (BD pessoal)
+
+#Aula 07 - Workers em background - banco de dados 
+
+*Atores que estão relacionados a banco de bados, mas não estão 
+diretamente ligados ao cenário dos SGBDs:
+
+-Designer do Sistema de SGBD (suporte ao sgbds, em si)
+-Pessoal de operação e manutenção     responsáveis por deixar o sistema disponível para os usuários consumirem as informações(hardware e software) 
+-Desenvolvedores de ferramentas  (ferramentas opcionais para diversos fins, como: modelagem,análise;)
+-Implementação do sistema de SGBD   (suporte ao sgbds, em si)
+
+#Aula 08 - Vantagens de Utilizar a abordagem de SGBDs
+
+- Controle de redundância
+
+.Updates desnecessários;
+.Desperdício;
+.Redundância de informações;
+.Inconsistência; 
+ 
+/Desnormalização --> quando há inconsistência em SGBDs e precisa corrigir;
+
+- Restrição de acesso 
+
+.Usuário precisa estar cadastrado;
+.Segurança aos acessos dos dados;
+
+- Storage - prove persistência 
+
+.Salvos em arquivo 
+.Impedance Mismatch Problem --> Falta de uma combinação entre uma estrutura de desenvolvimento de 
+software e de sgdbs;
+
+- Storage - prove estrutura
+
+.Caching
+.Buffering    Técnicas mais utilizadas pelos DBA;
+.Indexação 
+
+- Backup e Recovery   
+
+. Arquivos que foram perdidos, mas podem ser recuperados;
+. Provendo interface Multi-user 
+
+- Integridade de dados --> banco de dados não pode ser migrado
+para um estágio inválido; 
+
+- Alguns tipos de restrição:
+
+.Regras de domínio;
+.Asserções;
+.Gatilhos;
+.Depências funcionais;
+.Integridade referencial;
+
+*Inferência, ações com regras, trigeers; 
+
+# Aula 09 - Ganhos em utilizar SGBDs
+
+- Padronização 
+- Redução de tempo no desenvolvimento da aplicação; Features do app descontinuadas: retrieval
+- Flexibilidade (Requisitos, aprimorar, testar e desenvolver(fora de ordem))
+- Disponibilidade de info up to date --> atualizadas 
+. Economia com escalabilidade (operacional % Gerenciamento ) 
+
+#Aula 10 - Quando não usar SGBDs?
+
+-Diretamente ligado ao custo benefício;
+-Investimento inicial; Generalidade na definição 
+e processamento; 
+-Segurança controle de concorrência, recovery, 
+funções de integridade; 
+
+
+Quando não usar:
+- GIS Systems 
+-Comutação 
+
+-É importante entender os requisitos do projeto, antes 
+de fechar qualquer trabalho;
