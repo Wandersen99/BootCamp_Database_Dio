@@ -1,0 +1,512 @@
+	#Aula 01 - Apresentação do curso 
+
+* Mongo DB de forma introdutória;
+
+- Quando falamos em banco de dados não relacionais, indiretamente falamos em grande volume de dados;
+
+	#Aula 02 - Introdução 
+
+- Primeira aparição do banco NoSQL foi 1998;
+- Surge pra suprir as necessidades dos bancos de dados relacionais;
+
+*Not 
+ Only   = NoSQL
+ SQL 
+
+*É comum a utilização dos 2 tipos de banco de dados, sql e nosql;
+
+*Diferenças BD Relacional x BD NoSQL 
+
+	-> Escalabilidade: Banco de dados relacional Vertical
+- Aumento da capacidade para um unico recurso;
+- Processador, Memória e disco rigído;
+	-> Alguns bd relacionais possuem escalabilidade na Horizontal;
+- Replicas de dados, apenas a leitura; 
+
+	--> Escalabilidade em banco de dados NoSQL Horizontal
+- Particionando os dados(sharding) entre os nós é o mais conhecido.
+- É possível fazer upgrade e downgrade dos nós;
+
+*BD NoSQL ausência quase total de regras pra criação e utilização do banco de dados;
+-> Schema-free/schemaless 
+- Ausência da linguagem de consultas;
+
+
+*BD relacionais possuem regras;
+- Usa tabelas;
+
+* Performance 
+
+-BD Relacional depende do subsistema de discos;
+
+-BD NoSQL depende do tamanho do cluster e da latência da rede;
+
+*Transações 
+
+- BD Relacional;
+- (ACID) Atomicidade, Consistência, Isolamento, Durabilidade;
+
+-BD NoSQL (Alta disponibilidade e desempenho procuram sempre)
+- Basically Available;
+- Soft-State;
+- Eventually Consistent;
+
+-> Vantagens de utilizar um banco de dados NoSQL
+* Flexibilidade;
+* Escalabilidade;
+* Alta Performance;
+
+	#Conhecendo os tipos de banco de dados NoSQL
+
+	#Aula 03 - Tipos de Banco NoSQL
+
+* Site: DBengines -> Pra ver o que tem novo no mercado, sempre ficar atualizado;
+
+*Tipos de Bancos de dados Não relacionais:
+
+-> Baseados em documentos: Desde JSON até xml
+
+-> Chave valor: utilizado em forma de cache
+
+-> Orientado em forma de coluna: menos apresenta diferença em relação ao bd tradicionais/relacionais;
+
+-> Grafos: Estrutura matemática composta por nós(dados) e vértices(relacionamentos)
+ - São utilizados em detecção de fraudes, mecanismos de recomendações, redes sociais, sistemas de arquivo, games;
+ - Ex de mais utilizado: Neo4J 
+
+-> Prática:
+- Utiliza linguagem saifen;
+- Criar Conta no sandbox.neo4j.com
+
+-> Nó pode ter várias propriedades ou nenhuma, pode ter uma label ou nenhuma;
+
+: -> Define a label;
+Create: Cria os nós
+
+-> CREATE (:Client {name: "Bob Esponja", age: 28, hobbies:['Caça agua-viva, Comer Hamburgues']}) 
+
+(Depois clica na setinha azul)
+
+Forma de consulta: Utiliza o Match
+
+Ex: MATCH(bob_esponja) RETURN bob_esponja;
+
+ID é criada automaticamente
+
+.Abertura e fechamento de colchetes que vai definir um relacionamento;
+-> Pra dizer qual é a direção do relacionamento;
+-> Um relacionamento pode ter uma label ou não;
+
+CREATE(:Client {name: "Lula Molusco", age: 30, hobbies: ['Tocar Clarinete']} )  -[:Bloqueado]-> (:Client {name: "Patrick", hobbie: ["Caçar agua viva")
+
+Match(todos) RETURN todos;
+
+-- Criar nó aleatório 
+CREATE (:Object) 
+
+-- Criar relacionamento
+Math(lula:Client {name:"Lula Molusco"}), (patrick:Client {name:"Patrick"} ) Create (lula)- [:Bloqueado] -> (patrick)
+
+Quando os nós são apresentados de formas ou cores diferentes, significa que são de labels diferentes;
+
+
+* Decidiu desbloquear;
+Match (lula:Client {name: "Lula Molusco})-[relaciona:Bloqueado]-() DELETE relaciona 
+
+-> Delete usado para deletar nós e relacionamentos
+
+*Excluir um nó
+*MATCH -> é a consulta 
+
+MATCH (lula:Client {name: "Lula Molusco"}) DELETE lula;
+
+--> Atualizando um nó
+MATCH (patrick:Client {name: "Patrick"} SET patrick.hobbies = ["Caçar agua viva"];
+
+-- A label sempre vem depois dos 2 pontos;
+MATCH(patrick:Client {name: "Patrick"}) SET patrick:Client_Premium 
+Os grafos seguem padrão de cor; 
+
+	#Aula 04 - Coluna/Família de Colunas
+
+* Os tipos de BD NoSQL diferem em quesito de armazenamento;
+
+-> Armazenam exatamente em suas colunas de forma independente entre elas;
+-> KeySpace -> Família de colunas, informações armazenadas em colunas;
+-> A coluna é constituída em 3 etapas, timestemp, 
+
+	*Modelo de banco de dados do tipo Coluna/Família de Colunas
+Ex de mais utilizado: Cassandra;
+-> Volume muito maior de leitura do que de escrita;
+-> Fazer consulta pela chave primária;
+
+  Keyspace => database 
+  Column Family/table => table
+  Row Key(chave primária), consulta pra focar as consultas; => Primary Key
+  Column: Representa um valor contendo: Name, Value Timestamp
+
+Ex de onde usar: Registro de transações, rastreando praticamente qualquer coisa;
+
+Na prática: Baseado no bigtable da google;
+-> Ausência total de transações;
+-> Cassandra Query Language;
+
+-- Criando o keyspace e definindo replicação;
+
+CREATE KEYSPACE fenda_biquini WITH replication = {'class' : 'SimpleStrategy', 'replication_factor': 1};
+Use fenda_biquini; 
+CREATE COLUMNFAMILY clients(name TEXT PRIMARY KEY, age int);
+Select * from clients;
+
+Insert into clients (name, age) values ('Bob Esponja', 38);
+select * from clients;
+
+Insert into clients JSON'{"name": "Patrick"}';
+
+-- Coluna composta por name, timestemp e valor; 
+
+select age, writetime(age) from clients; 
+
+Select Json * from clients;
+
+Update clients set age=33 where name='Patrick';
+
+Alter columnfamily clients add hobby text;
+select * from clients; 
+
+*Importante: A função writetime não serve pra coleções e sim pra registro único;
+
+delete from clients where name='Bob Esponja';
+
+	#Aula 05 - Chave-Valor
+
+   key 
+* Chave: única e o valor 
+
+- Armazena um conjunto de dados, seja ele simples ou complexo, identificados por um identificador exclusivo; 
+
++ Bom desempenho em aplicações na nuvem;
+- Menor capacidade de busca;
+
+*Uso: cache, sessão de usuário, carrinho de compras;
+Ex: de mais utilizado: Redis 
+
+*Caractéristicas:
+- Alto desempenho;
+- Estrutura de dados na memória;
+- Versatilidade de uso;
+- Replicação e persistência;
+
+*Prática: try.redis.io
+-> Não existe definição de schema pra o tipo chave/valor;
+
+*Definir uma chave que possa usar novamente; Sempre ter o conhecimento da chave;
+
+SET user1:name "Bob Esponja"
+
+Quanto tempo vai expirar o registro;
+ex -> expira em segundos;
+px -> expira em milissegundos;
+
+Exists user2:name 
+0 -> não existe;
+1 -> existe
+
+Get = select 
+
+get user2:name 
+
+	#Aula 06 - Documento (Modelo mais utilizado)
+
+*Dados e documentos autocontidos e auto descritivos;
+-> Permite redundância e incosistência;
+-> Livre de esquemas podendo utilizar JSON, XML entre outros;
+*Mais utilizado: MongoDB
+
+	#Aula 07 - Introdução ao MongoDB e Banco de Dados NoSQL
+
+* Utiliza JSON para armazenamento dos dados;
+BSON -> JSON COM BINÁRIOS, PAR DE CHAVES E VALORES;
+
+-> Suporte a indices;
+
+-> Auto-Sharding: Escalamento horizontal;
+
+-> Map-Reduce: (ferramenta de consulta)
+
+-> GridFS: Armazenamento de arquivos;
+
+-> Rica linguagem de consultas;
+
+*Document ==> Tupla/Registro;
+Dados não podem depender de outros dados;
+
+*Collection ==> Tabela 
+
+*Embedding/linking ==> Join
+
+*Quando usar:
+-> Grande Volume de dados;
+-> Dados não necessariamente precisam estar estruturados;
+
+*Quando não usar:
+-> Necessidade de relacionamentos/joins;
+-> Propriedades ACID e transações são importantes;
+
+*Muito se fala hoje, em ter banco de dados poliglota;
+Onde a parte financeira que precisa das características de ACID
+ficaria em um banco de dados relacional e a parte de cardápio e clientes, ficaria
+no banco de dados não relacional;
+
+	#Aula 08 - Instalação 
+
+*Docker - plataforma de código aberto que possui um alto desempenho;
+-> Crie, teste apps separadamente; 
+-> Docker compose;
+
+Criar arquivo docker-compose.yml
+	version: '3.8'
+
+services: 
+	db:
+	   image: mongo
+	   container_name: db
+	   restart: always
+	   environment:
+	    - MONGO_INITDB_ROOT_USERNAME=dio
+	    - MONGO_INITDB_ROOT_PASSWORD=dio 
+	   ports:
+	    - "27017:27017"
+	   volumes:
+Pasta local onde quer q fique salvo	    - /User/Wander/DIO/dbdata:/data/db
+
+*Salvar o arquivo depois 
+
+	docker-compose up -d
+	docker container ps
+
+*Se conectar ao mongo local
+	mongo --host iplocaldamáquina:27017 -p dio -u dio
+
+	show databases
+	exit *pra sair 
+
+* robomongo.org 
+	Direct Connection 
+	dio 
+	admin
+	dio
+	dio
+
+	#Aula 09 MongoDB Cloud 
+site: mongodb.com/try 
+	Selecionar a opção CLOUD
+	Fazer cadastro;
+
+	build cluster;
+	free 
+	create cluster;
+
+	network acess, add ip address adicionar o corrente;
+	database acess
+	password acess / criar usuário e senha;
+
+	Connect, connect via shell, --username dio --password dio 
+
+	MongoDB Compass 
+
+	#Aula 10 - Schema Design 
+
+* Maioria dos bancos de dados não relacionais possuem schema free;
+- Porém existem boas práticas pra se usar;
+
+*Formas de estruturar os relacionamentos
+	Embedding vs Referência 
+
+*Embedding: Documentos autocontidos, todas as informações que precisar estão nele;
+
+- Pros: Consulta informações em uma única query;
+- Atualiza o registro em uma única operação;
+- Atomicidade só funciona no mongo db com um único documento;
+
+Contras: 
+- Limite de 16 MB por documento;
+
+*Documentos com depêndencia de outros documentos ou collections (REFERÊNCIA)
+
+*Pros:
+- Documentos pequenos;
+- Não duplica informações;
+- Usado quando os dados não são acessados em todas as consultas;
+
+*Contras:
+- Duas ou mais queries ou utilização do $lookup;
+
+*ONE-TO-ONE: Prefira atributos chave-valor no documento;
+
+*One-to-few: prefira embedding
+-subdocumentos;
+
+*Many-to-many: Prefira referência
+
+	#Aula 11 - Boas práticas;
+
+-> Evite documentos muito grandes;
+-> Use nome campos objetivos e curtos;
+-> Anàlise as suas queries utilizando explain()
+-> Atualize apenas os campos alterados;
+-> Evite negações em queries;
+-> Listas/Arrays dentro dos documentos não podem crescer sem limite;
+
+	#Aula 12 - JSON vs BSON 
+
+*Diferença entre json e bson
+
+*BSON:
+- É uma serialização codificada em binário de documentos semelhantes a JSON;
+- Contém extenções que permitem a representação de tipos de dados que não fazem parte da 
+especificação JSON. Por exemplo, BSON tem um tipo Date, ObjectID;
+- Mongo utiliza em seu armazenamento o BSON;
+
+	#Aula 13 - Operações de manipulação de dados 
+
+-> comando de listar databases
+	show databases;
+
+-> Criar novo databases;
+	use fenda_biquini 
+
+-> Criar collections de forma explicita
+	use fenda_biquini;
+	db.createCollection("test", {capped: true, max: 2, size: 2});
+	show collections;
+	db.test.insertOne({"name": "Teste 1"});
+	db.test.find({});
+	
+	db.test.insertOne({"name": "Teste 2"});
+	Se criar outro, ele vai excluir o mais antigo;
+
+	db.test1.insertOne({"age": 10})
+	db.test1.find({});
+
+-> Inserir documentos na collection de forma implicita
+
+	db.clients.insert([{"name": "Patrick", "age": 38}, {"name": "Bob Esponja"}])
+	db.clients.find({});
+
+
+Usar se o documento existir ou não
+	db.clients.save({"name": "Patrick", "age": 38})
+	Realiza a atualização ou a inserção dos dados)
+	Se o dado já existir, realiza a atualização, se o dado não existir, realiza a inserção;
+
+Atualizar um documento só dos dados desejados;
+	db.clients.update({"name": "Bob Esponja"}, {$set : {"age": 41}})
+	db.clients.find({})
+	
+*Atualizar todos os documentos que contenham uma determinada informação:
+	db.clients.update({"age":40}, {$set: {"age": 41}}, {multi: true})
+
+*Outras formas de atualizar os dados:
+	db.clients.updateMany({"age":44},{$set: {"age": 55}});
+
+* Fazendo algumas buscas;
+	db.clients.find({})
+	db.clients.find({"age": 44})
+	db.clients.find({"age": 44}).limit(1)
+	db.clients.find({"age": 44, "name": "Lula Molusco"})
+
+*Comandos para montar as queries;
+	db.clients.insertOne({"name": "Patrick2", "age": 30})
+
+*Utilizando comando in (possibilita fazer buscas com um intervalo de valores
+	db.clients.find({"age": {$in: [30, 41]}})
+
+* Utilizando o or 
+	db.clients.find({$or: [{"name": "Lula Molusco"},{"age":41}]})
+
+* Utilizando menor de 55 anos;
+	db.clients.find({"age": {$lt: 55}})
+
+*Menor ou igual a 30 anos:
+	db.clients.find({"age": {$lte: 30}})
+
+*Comando delete;
+	(delete one e delete many)
+
+	db.clients.deleteOne({"age": 55})
+	
+	db.clients.update({"name": "Bob Esponja"}, {"age": 55})
+
+	db.clients.deleteMany({"age": 30})
+
+-> ROBO 3T
+	create database / escolher nome /criar 
+
+Mongo DB Documentation;
+	
+	#Aula 14 - Performances e índices
+*Prevenir um scan collection 
+
+*Criar colecction no robo 3t 
+
+	for(var i=0; i< 1000; i++){
+		db.clients.insert({name: "Cliente" + i, age: i});
+		}
+
+quantos dados estão inseridos nessa colection:
+	db.getCollection('clients').count({})
+
+*Pegar id aleatório e testar:
+	db.getCollection('clients').find({_id: ObjectId(" ")}).explain(true)
+	
+explain() -> comando para analises da query
+
+	db.getCollection('clients').find({name: "Client0"}).explain(true)
+
+*Parte de indexes 
+
+*Para evitar collection scan, criar um index pra ele;
+	db.getCollection('clients').createIndex({name: 1}, {"name": "idx_name"})
+	db.getCollection('clients').find({name: "Client0"}).explain(true)
+
+	executionStats
+	totalDocsExamined
+*Criar indexação é melhor para performance do bd 
+
+	#Aula 15 - Agregações 
+MongoCloud -> 3 pontinhos em cluster -> load sample datatest
+		
+*Agregação é o procedimento de processar dados em uma ou mais etapas, onde o resultado de cada etapa 
+é utilizado na etapa seguinte, de modo a retornar um resultado combinado.
+
+- Agregação de proposito únuco 
+	-> Count
+	-> Distinct todos os possíveis valores de forma não duplicada de um determinado campo
+	db.getCollection('restaurants').distinct({"cuisine"})
+
+- Paperline mais básicas fornecem "filtros" e "operadores"
+
+Operadores: $group, $addFiels entre outros;
+	
+	db.getCollection('restaurants').aggregate([$group: {_id: "$cuisine", total: {$sum: 1}}}])
+	
+db.getCollection('restaurants').aggregate([{$addFiels :{"teste": true}}])
+
+
+*Funções: $sum, $avg, $max, $min 
+	
+db.getCollection('restaurants').aggregate([{$group: {_id: "$cuisine", total: {$sum: 1}, id_maximo: {$max: "$restaurant_id} }}])
+
+*Operadores lógicos: $and $not $nor #or 
+
+	*Adicionar parte de filtro na agregação
+db.getCollection('restaurants').aggregate([{$match : {$and:[{cuisine: "American"}, {borough: "Brooklyn"}]}}])
+
+*Operadores de comparação:
+> maior que: $gt 
+< menor que: $lt 
+<> diferente de: $nte
+= igual: $eq
+<= menor ou igual: $lte 
+< maior ou igual: $gte

@@ -1,0 +1,62 @@
+	#O papel dos Bancos de Dados SQL e NoSQL na engenharia de dados
+
+* O NoSQL e o SQL são complementares, o nosql não veio para substituir o sql e
+sim para suprir as necessidades que os bancos de dados relacionais não conseguiam;
+-> Devido o alto volume de dados na internet, o nosql é mais flexível em relação aos dados;
+
+* Como consultar um dado armazenado no NoSQL?
+-> A forma de consultar essas informações tem que ser pensadas no início;
+-> Vai consultar a chave, a consulta é feita a chave, então ela tem que ser pensada antes muito bem definida;
+	(chave-valor)
+
+*Precisa pensar na modelagem dos dados quando for inseri-los;
+
+* Conhecer para que esses banco de dados foram feitos, em que são usados, o conceito de cada um;
+
+* Quais são os SGBDs mais utilizados? CARREFOUR 
+-Engenharia de dados
+
+-> Oracle, modelo dimensional todo em oracle em contexto on-premise;
+-> Big data -> hdfs;eichbase, mongo db;
+GCP;
+
+* As arquiteturas precisam sempre de atualizações;
+-> Pensar numa transição posterior sempre ao escolher determinada tecnologia;
+
+*Sobre DataLake e Databricks
+-> Os lake são ferramentas que ajudam no previsionamento dos dados;
+
+-> lake: repositório de informações onde se pode armazenar um alto volume de dados;
+
+* Arquitetura do datalake;
+No ambiente de dados 5 itens quando se fala de datalake:
+-> Ingestão, armazenamento, processamento, disponibilidade da informação, segurança e governança;
+
+
+*Maiores desafios na hora de realizar o ETL;
+Processo de transformação dos dados(etl);
+
+Manipulação dos dados é o maior desafio; 
+
+*Diferença entre cientista de dados e engenheiro de dados:
+
+-> O papel do engenheiro esta ligado a preparação da informação, coletar, armazenar, deixar 
+a informação disponível para o cientista usar;
+
+-> O cientista é uma das opções de consumação dos dados; Criar modelos, parte de machine learning,
+vai usar a informação pra tirar insights dos dados;
+
+São áreas complementares;
+
+* Estatística e matemática são a base pra trabalhar com dados;
+Negócios também;
+
+* Dicas:
+-> Olhar critico ao resolver uma determinada demanda;
+-> Técnicas de ETL; ingestão de dados, armazenamento de dados;
+-> Sparking, conhecimento das ferramentas, visão mais crítica no fluxo do dado;
+-> Como disponibilizar da melhor forma aquela informação, como vai deixar disponível posteriormente;
+-> Senso crítico;
+
+
+
