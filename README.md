@@ -5,7 +5,7 @@ Bootcamp de database experience da DIO.
 
 ### **Engenharia de dados:**
 
-####O papel dos Bancos de Dados Relacionais (SQL) e Não Relacionais (NoSQL) no contexto de um Engenheiro de Dados.
+#### O papel dos Bancos de Dados Relacionais (SQL) e Não Relacionais (NoSQL) no contexto de um Engenheiro de Dados.
 
 * Antes de tudo, devemos lembrar que os bancos de dados relacionais (SQL) e não relacionais (NoSQL) são complementares e que hoje em dia, muitas empresas optam por utilizar os dois tipos juntos cada um ficando com uma função específica de gerir melhor cada tipo de dado a depender do contexto onde estão inseridos;
 
